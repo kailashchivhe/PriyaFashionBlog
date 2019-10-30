@@ -1,0 +1,76 @@
+.header-top {
+	background: #fff;
+	overflow: hidden;
+	padding: 18px 0;
+}
+
+.header-social {
+  float: right;
+  padding: 0%;
+}
+.header-social a {
+	color: #fff;
+	margin-right: 35px;
+}
+
+.user-panel {
+	float: right;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.user-panel a {
+	color: #fff;
+}
+
+.header-bottom {
+	padding: 38px 0;
+    position: relative;
+}
+
+.site-logo {
+    float: left;
+    padding: 0%;
+}
+
+.nav-switch {
+	display: none;
+}
+
+.main-menu,
+.footer-menu {
+	list-style: none;
+	float: left;
+    margin-right: 160px;
+    padding: 0%;
+    width: 100%;
+    background-color: #fbceb1
+}
+
+.main-menu li,
+.footer-menu li {
+	display: inline;
+}
+
+.main-menu li a,
+.footer-menu li a {
+	display: inline-block;
+	font-size: 15px;
+	font-weight: 500;
+    padding: 25px 20px;
+    color: #000;
+}
+
+.main-menu li a:hover,
+.footer-menu li a:hover {
+	color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+    
+}
+
+@media screen and (max-width: 575px) {
+    
+}

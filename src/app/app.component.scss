@@ -1,0 +1,54 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  
+ /*------------------
+  Header section
+---------------------*/
+
+.header-section {
+	clear: both;
+}
+
+
+/* Create two equal columns that floats next to each other */
+.leftcolumn {
+    float: left;
+    width: 70%;
+    padding: 10px;
+  }
+
+  .rightcolumn {
+  float: left;
+  width: 30%;
+  padding: 10px;
+}
+  
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+  
+.blogs-section .container {
+  margin-bottom: -30px;
+  padding-top: 0%;
+}
+
+@media screen and (max-width: 767px) {
+  .leftcolumn {
+    width: 100%;
+  }
+  
+  .rightcolumn {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 575px) {
+    
+} 

@@ -6,8 +6,37 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <style>
+    #loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white;
+    z-index: 999999;  
+    }
+    .loading-image {
+      position: absolute;
+      top: 50%;
+      z-index:1001;
+      left: 50%;
+      width: 120px;
+      height: auto;
+      margin:-60px 0 0 -60px;
+      -webkit-animation:spin 2s linear infinite;
+      -moz-animation:spin 2s linear infinite;
+      animation:spin 2s linear infinite;
+    }
+  </style>
 </head>
-<body>
-  <app-root></app-root>
+<body> 
+  <app-root>
+    <div id="loading">
+      <img class="loading-image" src="./assets/images/2097024.gif"  alt="Loading..." />
+      <br><br><br><br>
+       <p style="text-align: center; color:#05BBEF; font-size:25px;" >Priya Haridas Kotnis Blog Loading..</p>
+    </div>
+  </app-root>
 </body>
 </html>
