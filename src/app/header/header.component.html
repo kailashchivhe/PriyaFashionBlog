@@ -1,35 +1,83 @@
-<div class="header-top" style="background-color: #fbceb1">
+<div class="slide-one-item home-slider">
+    <carousel class="carousel slide carousel-fade">
+        <slide *ngFor="let slide of slides; let index=index">
+            <img [src]="slide" class="img-responsive center-block" style="width: 100%;object-fit: cover">
+        </slide>
+    </carousel>        
+</div>
+<div class="site-section">
     <div class="container">
-        <div class="site-logo">
-        <a href="/">
-            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="52" height="52"
-            viewBox="0 0 226 226" style=" fill:#000000;">
-            <g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,226v-226h226v226z" fill="none"></path><g fill="#ffffff">
-                <path d="M111.37019,0c-4.04057,0.44141 -7.77554,2.27494 -10.59375,5.16106l-26.07692,26.07692c-3.25962,3.22566 -5.12711,7.63972 -5.16106,12.22356v34.76923h-17.38462v34.76923h17.38462v78.23077h34.76923v-78.23077h34.76923v-34.76923h-34.76923v-27.70673l15.75481,-15.75481h20.64423l20.91587,20.91587l24.44712,-24.44712l-26.07692,-26.07692c-3.22566,-3.25962 -7.63972,-5.1271 -12.22356,-5.16106h-34.76923c-0.54327,-0.03395 -1.08654,-0.03395 -1.62981,0z">
-                </path>
-            </g></g>
-            </svg>
-        </a>
+        <div class="row mb-5">
+            <div class="col-12 section-heading"><h2>Latest Posts</h2></div>
         </div>
-        <div class="header-social">
-            <a href="#"><i class="fa fa-instagram" style="color: #fff"></i></a>
-            <a href="#"><i class="fa fa-facebook" style="color: #fff"></i></a>
-            <a href="#"><i class="fa fa-twitter" style="color: #fff"></i></a>
-            <a href="#"><i class="fa fa-youtube" style="color: #fff"></i></a>
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div>
+                  <a href="single.html"><img src="../../assets/images/facebook2.jpg" alt="Image" class="img-fluid rounded"></a>  
+                  <div class="entry3 d-block d-sm-flex">
+                      <div class="text mr-4 order-1">
+                          <span class="post-category text-white bg-success mb-3">Blogs</span>
+                          <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
+                          <span class="post-meta mb-3 d-block">May 12, 2019</span>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio.</p>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-4 pl-lg-4">
+                <div class="bio text-center">
+                    <img src="../../assets/images/bio2.jpg" alt="Image Placeholder" class="img-fluid mb-5">
+                    <div class="bio-body">
+                        <h2>Priya Haridas Kotnis</h2>
+                        <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>
+                        <p class="social">
+                            <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
+                            <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
+                            <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
+                            <a href="#" class="p-2"><span class="fa fa-youtube-play"></span></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<div class="header-bottom" style="background-image: url('./assets/images/pattern.png');background-size:100%;object-fit:cover;padding: 0%">
+<div class="site-section">
     <div class="container">
-        <carousel class="carousel slide carousel-fade">
-            <slide *ngFor="let slide of slides; let index=index">
-                <img [src]="slide" class="img-responsive center-block" style="width: 100%;height: 400px;object-fit: cover">
-            </slide>
-        </carousel>
-        <ul class="main-menu">
-                <li><a href="#">Fashion</a></li>
-                <li><a href="contact.html">Beauty</a></li>
-                <li><a href="#">Night Life</a></li>
-        </ul>        
+        <div class="row mb-5">
+            <div class="col-12 section-heading"><h2>Categories</h2></div>
+        </div>
+      <div class="row align-items-stretch retro-layout">
+        <div class="col-md-5">
+          <a href="blogs/fashion" class="hentry img-1 h-100 gradient" style="background-image: url('../assets/images/fashion.jpg');">
+            <span class="post-category text-white bg-danger">Fashion</span>
+            <div class="text">
+              <span>View All</span>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-7">
+          <a href="blogs/beauty" class="hentry img-2 v-height mb30 gradient" style="background-image: url('../assets/images/beauty.jpg');">
+            <span class="post-category text-white bg-success">Beauty</span>
+            <div class="text text-sm">
+              <span>View All</span>
+            </div>
+          </a>
+          <div class="two-col d-block d-md-flex">
+            <a href="blogs/travel" class="hentry v-height img-2 gradient" style="background-image: url('../assets/images/travel.jpg');">
+              <span class="post-category text-white bg-primary">Travel</span>
+              <div class="text text-sm">
+                <span>View All</span>
+              </div>
+            </a>
+            <a href="blogs/lifestyle" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('../assets/images/lifestyle.jpeg');">
+              <span class="post-category text-white bg-warning">Lifestyle</span>
+              <div class="text text-sm">
+                <span>View All</span>
+              </div>
+            </a>
+          </div>          
+        </div>
+      </div>
     </div>
 </div>
