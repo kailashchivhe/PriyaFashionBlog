@@ -5,12 +5,11 @@ import { BlogsComponent } from './blogs/blogs.component';
 import { BlogContentComponent } from './blogs/blog-content/blog-content.component';
 import { FashionListComponent } from './blogs/generic-blog-list/fashion-list/fashion-list.component';
 import { BeautyListComponent } from './blogs/generic-blog-list/beauty-list/beauty-list.component';
-import { LifestyleListComponent } from './blogs/generic-blog-list/lifestyle-list/lifestyle-list.component';
+import { FoodListComponent } from './blogs/generic-blog-list/food-list/food-list.component';
 import { TravelListComponent } from './blogs/generic-blog-list/travel-list/travel-list.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminblogstartComponent } from './admin-panel/adminblogstart/adminblogstart.component';
 import { AdminblogeditComponent } from './admin-panel/adminblogedit/adminblogedit.component';
-import { AdminblogdetailComponent } from './admin-panel/adminblogdetail/adminblogdetail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
@@ -20,7 +19,7 @@ const routes: Routes = [
       { path: '', component: FashionListComponent },
       { path: 'fashion', component: FashionListComponent },
       { path: 'beauty', component: BeautyListComponent },
-      { path: 'lifestyle', component: LifestyleListComponent },
+      { path: 'food', component: FoodListComponent },
       { path: 'travel', component: TravelListComponent },
       { path: '**', component: PageNotFoundComponent }
     ]},

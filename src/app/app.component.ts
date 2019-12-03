@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {BlogConstants} from './model/BlogConstants'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

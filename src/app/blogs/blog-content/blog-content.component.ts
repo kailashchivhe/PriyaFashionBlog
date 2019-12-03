@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog-content.component.scss']
 })
 export class BlogContentComponent implements OnInit {
-
+  slides=[ '../assets/images/facebook1.jpg','../assets/images/facebook2.jpg']
   constructor() { }
 
   ngOnInit() {

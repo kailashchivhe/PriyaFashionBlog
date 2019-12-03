@@ -4,14 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BlogsComponent } from './blogs/blogs.component';
-import { AboutComponent } from './about/about.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CarouselModule } from '../../node_modules/ngx-bootstrap/carousel';
 import { HeaderComponent } from './header/header.component';
 import { BlogContentComponent } from './blogs/blog-content/blog-content.component';
 import { FashionListComponent } from './blogs/generic-blog-list/fashion-list/fashion-list.component';
 import { BeautyListComponent } from './blogs/generic-blog-list/beauty-list/beauty-list.component';
-import { LifestyleListComponent } from './blogs/generic-blog-list/lifestyle-list/lifestyle-list.component';
+import { FoodListComponent } from './blogs/generic-blog-list/food-list/food-list.component';
 import { TravelListComponent } from './blogs/generic-blog-list/travel-list/travel-list.component';
 import { environment } from '../environments/environment';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
@@ -30,12 +29,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     BlogsComponent,
-    AboutComponent,
     HeaderComponent,
     BlogContentComponent,
     FashionListComponent,
     BeautyListComponent,
-    LifestyleListComponent,
+    FoodListComponent,
     TravelListComponent,
     AdminPanelComponent,
     AdminbloglistComponent,
