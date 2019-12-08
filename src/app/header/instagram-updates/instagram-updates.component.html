@@ -1,0 +1,15 @@
+
+<div *ngIf="bShowloader; then ifblock; else elseblock"></div> 
+<ng-template #ifblock>
+    <div class="loader"></div>
+</ng-template>
+<ng-template #elseblock>
+    <div class="row">
+        <div class="column" *ngFor="let edges of instaData.graphql.user.edge_owner_to_timeline_media.edges; let index=index">
+            <div *ngIf="index < 6; then ifblock"></div>
+            <ng-template #ifblock>
+                    <img [src]="edges.node.display_url" alt="Snow" style="width:100%">
+            </ng-template>
+        </div>
+    </div>    
+</ng-template>

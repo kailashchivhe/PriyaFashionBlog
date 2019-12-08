@@ -1,0 +1,14 @@
+.headerText{
+    font-family: League-Gothic;
+    color:#000000;
+    font-size: 50px;
+    font-weight: bold;
+}
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+ @media screen and (max-width: 500px) {
+    .headerText{
+        font-size: 12px;
+        font-weight: bold;
+        font-stretch: extra-expanded;
+    }    
+}
