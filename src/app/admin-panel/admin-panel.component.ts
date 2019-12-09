@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Upload } from '../model/Upload';
-import { BlogsService } from '../firebaseService/blogs.service';
+import { BlogsService } from '../sharedServices/firebaseService/blogs.service';
 
 @Component({
   selector: 'app-admin-panel',

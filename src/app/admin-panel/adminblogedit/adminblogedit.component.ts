@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogsService } from 'src/app/firebaseService/blogs.service';
+import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Upload } from 'src/app/model/Upload';
 import { FormGroup, FormControl } from '@angular/forms';

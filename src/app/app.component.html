@@ -1,79 +1,16 @@
 <div class="site-wrap">
-    <div class="site-mobile-menu">
-        <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-            <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-    </div>
-        
     <header class="site-navbar pt-3" role="banner" style="background-color: #fbceb1;">
         <div class="container-fluid">
             <div class="row align-items-center">
                 <h1 class="col-6 col-xl-6 logo"><a href="#" class="headerText">PRIYA HARIDAS KOTNIS</a></h1>  
             </div>
-
-            <div class="col-12 d-none d-xl-block border-top">
-                <nav class="site-navigation text-center " role="navigation">
-                    <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block mb-0">
-                        <li><a href="#">Home</a></li>
-                        <li><a href="blogs/fashion">Fashion</a></li>
-                        <li><a href="blogs/beauty">Beauty</a></li>
-                        <li><a href="blogs/food">Food</a></li>
-                        <li><a href="blogs/travel">Travel</a></li>
-                    </ul>
-                </nav>
-            </div>                 
+            <app-menu></app-menu> 
         </div>
     </header>
     <div>
         <router-outlet></router-outlet>
     </div>
     <div class="site-footer" style="background-color: #fbceb1;">
-        <div class="container">
-            <div class="row mb-5">
-                <div class="col-md-4">
-                  <h3 class="footer-heading mb-4 text-black">About Me</h3>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat reprehenderit magnam deleniti quasi saepe, consequatur atque sequi delectus dolore veritatis obcaecati quae, repellat eveniet omnis, voluptatem in. Soluta, eligendi, architecto.</p>
-                </div>
-                <div class="col-md-3 ml-auto">
-                  <h3 class="footer-heading mb-4 text-black">Quick Menu</h3>
-                  <ul class="list-unstyled float-left mr-5">
-                    <li><a href="#">Fashion</a></li>
-                    <li><a href="#">Beauty</a></li>
-                    <li><a href="#">Lifestyle</a></li>
-                    <li><a href="#">Travel</a></li>
-                  </ul>
-                </div>
-                <div class="col-md-4">
-                    <div class="mb-5">
-                        <div>
-                            <h3 class="footer-heading mb-4 text-black">Join My Fam!</h3>
-                            <form class="form-footer-subscribe">
-                                <div class="form-group ">
-                                    <input type="text" class="form-control" placeholder="Full Name"><br/>
-                                    <input type="text" class="form-control" placeholder="Email ID"><br/>
-                                    <input type="text" class="form-control" placeholder="Mobile Number"><br/>
-                                    <input type="submit" class="btn btn-primary text-white" value="Subscribe">
-                                </div>
-                            </form>
-                            <p>
-                                <a href="#"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
-                                <a href="#"><span class="icon-twitter p-2"></span></a>
-                                <a href="#"><span class="icon-instagram p-2"></span></a>
-                                <a href="#"><span class="icon-youtube p-2"></span></a>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 text-center">
-                    <p>
-                        Copyright &copy; All rights reserved by Kailash Chivhe
-                    </p>
-                </div>
-            </div>
+        <app-footer></app-footer>
     </div>
 </div>

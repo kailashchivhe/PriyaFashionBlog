@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
+import { BodyComponent } from './body/body.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { BlogContentComponent } from './blogs/blog-content/blog-content.component';
 import { FashionListComponent } from './blogs/generic-blog-list/fashion-list/fashion-list.component';
@@ -14,7 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 
 const routes: Routes = [
-  { path: '', component: HeaderComponent },
+  { path: '', component: BodyComponent },
   { path: 'blogs', component: BlogsComponent, children:[
       { path: '', component: FashionListComponent },
       { path: 'fashion', component: FashionListComponent },

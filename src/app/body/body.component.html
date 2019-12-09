@@ -1,0 +1,31 @@
+<div class="slide-one-item home-slider">
+    <carousel class="carousel slide carousel-fade">
+        <slide *ngFor="let slide of slides; let index=index">
+            <img [src]="slide" class="img-responsive center-block" style="width: 100%;object-fit: cover">
+        </slide>
+    </carousel>        
+</div>
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 section-heading"><h2>Latest Posts</h2></div>
+        </div>
+        <app-latest-post></app-latest-post>
+    </div>
+</div>
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 section-heading"><h2>Categories</h2></div>
+        </div>
+        <app-categories></app-categories>
+    </div>
+</div>
+<div class="site-section">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 section-heading"><h2>Instagram Updates</h2></div>
+        </div>
+        <app-instagram-updates></app-instagram-updates>   
+    </div>
+</div>

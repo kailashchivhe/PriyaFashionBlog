@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { CarouselModule } from '../../node_modules/ngx-bootstrap/carousel';
-import { HeaderComponent } from './header/header.component';
+import { BodyComponent } from './body/body.component';
 import { BlogContentComponent } from './blogs/blog-content/blog-content.component';
 import { FashionListComponent } from './blogs/generic-blog-list/fashion-list/fashion-list.component';
 import { BeautyListComponent } from './blogs/generic-blog-list/beauty-list/beauty-list.component';
@@ -25,13 +25,17 @@ import { AdminblogstartComponent } from './admin-panel/adminblogstart/adminblogs
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { InstagramUpdatesComponent } from './header/instagram-updates/instagram-updates.component';
+import { InstagramUpdatesComponent } from './body/instagram-updates/instagram-updates.component';
+import { FooterComponent } from './footer/footer/footer.component';
+import { MenuComponent } from './header/menu/menu.component';
+import { LatestPostComponent } from './body/latest-post/latest-post.component';
+import { CategoriesComponent } from './body/categories/categories.component';
  
 @NgModule({
   declarations: [
     AppComponent,
     BlogsComponent,
-    HeaderComponent,
+    BodyComponent,
     BlogContentComponent,
     FashionListComponent,
     BeautyListComponent,
@@ -44,6 +48,10 @@ import { InstagramUpdatesComponent } from './header/instagram-updates/instagram-
     AdminblogstartComponent,
     PageNotFoundComponent,
     InstagramUpdatesComponent,
+    FooterComponent,
+    MenuComponent,
+    LatestPostComponent,
+    CategoriesComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

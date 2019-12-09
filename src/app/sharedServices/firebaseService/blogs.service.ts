@@ -1,12 +1,12 @@
 import { Injectable, ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { Upload } from '../model/Upload';
+import { Upload } from '../../model/Upload';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { finalize, tap } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
-import { IBlogs } from '../model/IBlogs';
-import { BlogData } from '../model/BlogData';
-import { FileTypeEnum } from '../model/FileTypeEnum';
+import { IBlogs } from '../../model/IBlogs';
+import { BlogData } from '../../model/BlogData';
+import { FileTypeEnum } from '../../model/FileTypeEnum';
 
 @Injectable({
   providedIn: 'root'
