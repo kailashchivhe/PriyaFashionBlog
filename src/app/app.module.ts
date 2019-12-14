@@ -30,7 +30,8 @@ import { FooterComponent } from './footer/footer/footer.component';
 import { MenuComponent } from './header/menu/menu.component';
 import { LatestPostComponent } from './body/latest-post/latest-post.component';
 import { CategoriesComponent } from './body/categories/categories.component';
- 
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +65,8 @@ import { CategoriesComponent } from './body/categories/categories.component';
     AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,11 +1,48 @@
-<div class="col-12 d-none d-xl-block border-top">
-    <nav class="site-navigation text-center " role="navigation">
-        <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block mb-0">
-            <li><a href="#">Home</a></li>
-            <li><a href="blogs/fashion">Fashion</a></li>
-            <li><a href="blogs/beauty">Beauty</a></li>
-            <li><a href="blogs/food">Food</a></li>
-            <li><a href="blogs/travel">Travel</a></li>
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-light" [containerInside]="false">
+    <mdb-navbar-brand>
+        <a class="nav-link" href="#">
+            <img src="../../../assets/images/blogger.png"/>
+        </a>
+    </mdb-navbar-brand>
+    <links>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect href="blogs/fashion">Fashion</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect href="blogs/beauty">Beauty</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect href="blogs/food">Food</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link waves-light" mdbWavesEffect href="blogs/travel">Travel</a>
+            </li>
         </ul>
-    </nav>
-</div>
+        <ul class="navbar-nav ml-auto nav-flex-icons">
+            <li class="nav-item">
+              <a class="nav-link">
+               <span class="fa fa-instagram fa-2x p-2"></span>
+              </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span class="fa fa-facebook fa-2x p-2"></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span class="fa fa-youtube fa-2x p-2" ></span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span class="fa fa-twitter fa-2x p-2"></span> 
+                </a>
+            </li>
+        </ul>
+    </links>
+</mdb-navbar>
