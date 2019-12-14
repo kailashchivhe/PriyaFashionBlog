@@ -18,7 +18,7 @@ export class BlogsService {
   downloadURL: any;
   url:String;
   constructor(private firebase:AngularFireDatabase, private firebaseStorage: AngularFireStorage) { 
-    this.init();
+    // this.init();
     // this.blogs = this.firebase.list('blogs/');
   }
 

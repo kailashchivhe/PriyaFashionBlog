@@ -28,7 +28,8 @@ const routes: Routes = [
     { path: '', component: AdminblogstartComponent },
     { path: 'new', component: AdminblogeditComponent },
     { path: '**', component: PageNotFoundComponent }
-  ] },
+    ] 
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 
