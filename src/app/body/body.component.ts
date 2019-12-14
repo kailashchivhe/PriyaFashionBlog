@@ -9,7 +9,8 @@ import { BlogsService } from '../sharedServices/firebaseService/blogs.service';
 export class BodyComponent implements OnInit {
   public slides=[ '../assets/images/cover_photo_final.jpg',
   '../assets/images/facebook1.jpg',
-  '../assets/images/facebook2.jpg']
+  '../assets/images/facebook2.jpg',
+  '../assets/images/beauty_2.jpg']
   
   constructor( private blogsService:BlogsService) { }
 

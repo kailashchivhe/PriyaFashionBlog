@@ -7,23 +7,21 @@
         <div class="col-md-3 ml-auto">
             <h3 class="footer-heading mb-4 text-black">Quick Menu</h3>
             <ul class="list-unstyled float-left mr-5">
-                <li><a href="#">Fashion</a></li>
-                <li><a href="#">Beauty</a></li>
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Travel</a></li>
+                <li><a href="blogs/fashion">Fashion</a></li>
+                <li><a href="blogs/beauty">Beauty</a></li>
+                <li><a href="blogs/food">Food</a></li>
+                <li><a href="blogs/travel">Travel</a></li>
             </ul>
         </div>
         <div class="col-md-4">
             <div class="mb-5">
                 <div>
                     <h3 class="footer-heading mb-4 text-black">Join My Fam!</h3>
-                    <form class="form-footer-subscribe">
-                        <div class="form-group ">
-                            <input type="text" class="form-control" placeholder="Full Name"><br/>
-                            <input type="text" class="form-control" placeholder="Email ID"><br/>
-                            <input type="text" class="form-control" placeholder="Mobile Number"><br/>
-                            <input type="submit" class="btn btn-primary text-white" value="Subscribe">
-                        </div>
+                    <form [formGroup]="subscribeForm" class="form-footer-subscribe">
+                        <input type="text" class="form-control" id="email" formControlName="name" placeholder="Full Name"><br/>
+                        <input type="text" class="form-control" id="email" formControlName="email" placeholder="Email ID"><br/>
+                        <input type="text" class="form-control" id="email" formControlName="mobile" placeholder="Mobile Number"><br/>
+                        <input type="submit"  (click)="joinFam()" class="btn btn-primary text-white" value="Subscribe">
                     </form>
                     <p>
                         <a href="#"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>

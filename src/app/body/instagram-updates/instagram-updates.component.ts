@@ -11,10 +11,11 @@ import { IData } from 'src/app/model/IData';
 export class InstagramUpdatesComponent implements OnInit {
   public bShowloader = true;
   public instaData:IData;
+  private subscribed;
   constructor(private instaService:InstaServiceService) { }
   
   ngOnInit() {
-    this.instaService.getPosts().subscribe(data=>{
+    this.subscribed = this.instaService.getPosts().subscribe(data=>{
       this.instaData = data;
       this.bShowloader = false;
     });
@@ -22,6 +23,6 @@ export class InstagramUpdatesComponent implements OnInit {
 
   ngOnDestroy()
   {
-    this.instaService.getPosts().subscribe().unsubscribe();
+    this.subscribed.unsubscribe();
   }
 }

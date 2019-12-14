@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IData } from '../../model/IData';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InstaServiceService {
   private url:string  = "https://www.instagram.com/flowerfairyofficial/?__a=1"
-  constructor(private http:HttpClient) { }
+  
+  constructor(private http:HttpClient) { 
+  }
 
   public getPosts():Observable<IData>
   {
