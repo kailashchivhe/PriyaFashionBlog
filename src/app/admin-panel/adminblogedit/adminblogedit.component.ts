@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Upload } from 'src/app/model/Upload';
 import { FormGroup, FormControl } from '@angular/forms';
 import { BlogData } from 'src/app/model/BlogData';
+import { Upload } from 'src/app/model/Upload';
+import { FileTypeEnum } from 'src/app/model/FileTypeEnum';
+import { AngularFireStorage } from 'angularfire2/storage';
 
 @Component({
   selector: 'app-adminblogedit',
@@ -21,10 +23,11 @@ export class AdminblogeditComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private firebaseService: BlogsService,
-    private router: Router) { }
+    private router: Router, private firebaseStorage: AngularFireStorage) { }
 
   ngOnInit() {
     this.initFormControls();
+    this.firebaseService.getAllBlogs();
   }
 
   onSubmit() 
@@ -49,22 +52,6 @@ export class AdminblogeditComponent implements OnInit {
   private initForm() 
   {
   }
-  // coverPicFile: File;
-  // pic1File: File;
-  // pic2File: File;
-  // pic3File: File;
-  // currentUpload: Upload;
-
-  detectFiles(event) {
-    // this.selectedFiles = event.target.files;
-  }
-
-  uploadSingle(file : File) {
-    // let file = this.selectedFiles.item(0)
-    
-    // this.currentUpload = new Upload(file);
-    // this.firebaseService.uploadData(this.currentUpload)
-  }
 
   addBlog(){
     let blogData:BlogData = {
@@ -82,7 +69,51 @@ export class AdminblogeditComponent implements OnInit {
       pic2File: this.pic2,
       pic3File: this.pic3
     }
-    this.firebaseService.uploadBlog( blogData );
+    this.uploadData(blogData);
+  }
+
+  async uploadData(blogData:BlogData)
+  {
+    let path = `blogs/${blogData.title}/`;
+    let uploadList = [ new Upload(blogData.coverPhotoFile,FileTypeEnum.COVER_PIC,path),
+      new Upload(blogData.pic1File,FileTypeEnum.PIC_ONE,path),
+      new Upload(blogData.pic2File,FileTypeEnum.PIC_TWO,path),
+      new Upload(blogData.pic3File,FileTypeEnum.PIC_THREE,path),
+     ];
+     for( let upload of uploadList )
+     {
+       let downloadURL = await this.uploadFile(upload);
+       if( upload.fileType == FileTypeEnum.COVER_PIC )
+       {
+          blogData.coverPhoto = downloadURL.toString();
+       }
+       else if( upload.fileType == FileTypeEnum.PIC_ONE )
+       {
+          blogData.pic1 = downloadURL.toString();
+       }
+       else if( upload.fileType == FileTypeEnum.PIC_TWO )
+       {
+          blogData.pic2 = downloadURL.toString();
+       }
+       else if( upload.fileType == FileTypeEnum.PIC_THREE )
+       {
+        blogData.pic3 = downloadURL.toString();
+       }
+     }
+     this.firebaseService.pushData(blogData);
+     alert("Upload Success");
+     this.initForm();
+  }
+
+  uploadFile( upload:Upload )
+  {
+    return new Promise((resolve,reject)=>{
+      this.firebaseStorage.upload(upload.basePath.concat(upload.file.name), upload.file).then(rst => {
+        rst.ref.getDownloadURL().then(url => {
+            resolve(url);
+        });
+      });
+    });      
   }
 
   addCoverPic(event)
