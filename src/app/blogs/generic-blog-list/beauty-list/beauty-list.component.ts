@@ -13,4 +13,9 @@ export class BeautyListComponent implements OnInit{
   ngOnInit() {
   }
 
+  getUrl()
+  {
+    return "url('../../../../assets/images_data/beauty/beauty_cover_pic1.jpg')";
+  }
+
 }

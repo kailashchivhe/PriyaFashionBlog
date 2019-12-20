@@ -7,9 +7,10 @@ import { BlogsService } from '../sharedServices/firebaseService/blogs.service';
   styleUrls: ['./body.component.scss']
 })
 export class BodyComponent implements OnInit {
-  public slides=[ '../assets/images/cover_photo_final.jpg',
-  '../assets/images/facebook1.jpg',
-  '../assets/images/facebook2.jpg']
+  public slides=[ '../assets/images_data/caraousel/cover_pic_1.jpg',
+  '../assets/images_data/caraousel/cover_pic_3.jpg',
+  '../assets/images_data/caraousel/cover_pic_4.jpg',
+  '../assets/images_data/caraousel/cover_pic_5.jpg']
   
   constructor( private blogsService:BlogsService) { }
 

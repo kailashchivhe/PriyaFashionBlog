@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-travel-list',
@@ -15,5 +15,10 @@ export class TravelListComponent implements OnInit{
 
   highlight(event){
     console.log("Hover working")
+  }
+
+  getUrl()
+  {
+    return "url('../../../../assets/images_data/travel/travel_cover_pic.jpg')";
   }
 }

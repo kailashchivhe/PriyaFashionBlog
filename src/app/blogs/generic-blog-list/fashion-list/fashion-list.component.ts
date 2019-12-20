@@ -13,4 +13,8 @@ export class FashionListComponent implements OnInit{
   ngOnInit() {
   }
 
+  getUrl()
+  {
+    return "url('../../../../assets/images_data/fashion/fashion_cover_pic.jpeg')";
+  }
 }
