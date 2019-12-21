@@ -1,28 +1,35 @@
 <div class="row">
     <div class="col-lg-8 mb-5 mb-lg-0">
-        <div>
-            <a href="single.html"><img src="../../assets/images_data/caraousel/cover_pic_3.jpg" alt="Image" class="img-fluid rounded"></a>  
-              <div class="entry3 d-block d-sm-flex">
-                  <div class="text mr-4 order-1">
-                      <span class="post-category text-white bg-success mb-3">Blogs</span>
-                      <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                      <span class="post-meta mb-3 d-block">May 12, 2019</span>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio.</p>
-                  </div>
-              </div>
+        <div *ngFor="let post of latestPosts">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4 waves-light" mdbWavesEffect>
+                        <img class="img-fluid" src={{post.coverPhoto}} alt="Sample image">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <span class="post-category text-white bg-success mb-3">{{post.type}}</span>
+                    <h3 class="font-weight-bold mb-3"><strong>{{post.title}}</strong></h3>
+                    <p>{{post.subtitle}}</p>
+                    <a mdbBtn color="default" mdbWavesEffect>Read more</a>
+                </div>  
+            </div><br/>
         </div>
     </div>
     <div class="col-lg-4 pl-lg-4">
         <div class="bio text-center">
             <img src="../../assets/images_data/bio_pic_2.jpg" alt="Image Placeholder" class="img-fluid mb-5">
             <div class="bio-body">
-                <h2>Priya Haridas Kotnis</h2>
+                <h2 class="font-weight-bold mb-3">Priya Haridas Kotnis</h2>
                 <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>
                 <p class="social">
-                    <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-youtube-play"></span></a>
+                    <a href="#" class="p-2"><span class="fa fa-instagram fa-2x p-2"></span></a>
+                    <a href="#" class="p-2"><span class="fa fa-facebook fa-2x p-2"></span></a>
+                    <a href="#" class="p-2"><span class="fa fa-youtube fa-2x p-2"></span></a>
+                    <a href="#" class="p-2"><span class="fa fa-twitter fa-2x p-2"></span></a>
                 </p>
             </div>
         </div>

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IBlogs } from 'src/app/model/IBlogs';
 import { Subscription } from 'rxjs';
 import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { BlogData } from 'src/app/model/BlogData';
 
 @Component({
   selector: 'app-adminbloglist',
@@ -10,7 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./adminbloglist.component.scss']
 })
 export class AdminbloglistComponent implements OnInit {
-  pro: IBlogs[];
+  pro: BlogData[];
   subscription: Subscription;
   constructor(private firebaseService: BlogsService,
     private router: Router,

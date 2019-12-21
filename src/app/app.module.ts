@@ -16,7 +16,6 @@ import { environment } from '../environments/environment';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AdminbloglistComponent } from './admin-panel/adminbloglist/adminbloglist.component';
 import { AdminblogdetailComponent } from './admin-panel/adminblogdetail/adminblogdetail.component';
@@ -31,6 +30,7 @@ import { MenuComponent } from './header/menu/menu.component';
 import { LatestPostComponent } from './body/latest-post/latest-post.component';
 import { CategoriesComponent } from './body/categories/categories.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import {NgxImageCompressService} from 'ngx-image-compress';
 
 @NgModule({
   declarations: [
@@ -61,14 +61,13 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     CarouselModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFirestoreModule,
     AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     MDBBootstrapModule.forRoot()
   ],
-  providers: [],
+  providers: [NgxImageCompressService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

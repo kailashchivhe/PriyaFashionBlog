@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { AngularFireStorage } from 'angularfire2/storage';
 import { BlogData } from '../../model/BlogData';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogsService {
   blogs: AngularFireList<any>;
-  constructor(private firebase:AngularFireDatabase, private firebaseStorage: AngularFireStorage) {}
+  constructor(private firebase:AngularFireDatabase) {}
 
   init()
   {

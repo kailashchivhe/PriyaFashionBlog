@@ -1,34 +1,40 @@
 <div class="comment-form-wrap pt-5">
-    <form [formGroup]="blogForm" action="#" class="p-5 bg-light">
-        <label>Blog Title *</label>
-        <input type="text" class="form-control" id="title" formControlName="title"><br/>
-            
-        <label>Blog Subtitle *</label>
-        <input type="email" class="form-control" id="email" formControlName="subtitle"><br/>
-            
-        <label>Type *</label>&nbsp;
-        <select formControlName="type">
-            <option value="fashion">Fashion</option>
+    <form [formGroup]="blogForm" class="p-5 ">
+        <div class="md-form">
+            <input mdbInput placeholder="Enter Blog Title here" type="text" id="title" class="form-control" formControlName="title">
+            <label for="title">Blog Title *</label>
+        </div>
+        
+        <div class="md-form">
+                <input mdbInput placeholder="Enter Blog Sub-Title here" type="text" id="subtitle" class="form-control" formControlName="subtitle">
+                <label for="subtitle">Blog Sub-Title *</label>
+        </div>
+
+        <label>Blog Type *</label>&nbsp;
+        <select class="browser-default custom-select" formControlName="type">
+            <option selected value="fashion">Fashion</option>
             <option value="travel">Travel</option>
             <option value="beauty">Beauty</option>
             <option value="lifestyle">Lifestyle</option>
-        </select><br/>
+        </select><br/><br/>
         
         <label>Cover Photo *</label>
-        <input type="file" class="form-control" id="coverPic" formControlName="coverPic" (change)="addCoverPic($event)"><br/>
-                
+        <button mdbBtn (click)="addCoverPic()" color="default" rounded="true" mdbWavesEffect>Select Cover Pic</button><br/><br/>       
+        
         <label>Pic 1 *</label>
-        <input type="file" class="form-control" id="pic1" formControlName="pic1" (change)="addPic1($event)"><br/>
-                
-        <label>Pic 2 *</label>
-        <input type="file" class="form-control" id="pic2" formControlName="pic2" (change)="addPic2($event)"><br/>
-                
-        <label>Pic 3 *</label>
-        <input type="file" class="form-control" id="pic3" formControlName="pic3" (change)="addPic3($event)"><br/>
-            
-        <label>Description *</label>
-        <textarea name="" id="message" cols="30" rows="10" class="form-control" formControlName="description"></textarea><br/>
+        <button mdbBtn (click)="addPic1()" color="default" rounded="true" mdbWavesEffect>Select Pic 1</button><br/><br/> 
 
-        <input value="Add Blog" (click)="addBlog()" class="btn btn-primary">
+        <label>Pic 2 *</label>
+        <button mdbBtn (click)="addPic2()" color="default" rounded="true" mdbWavesEffect>Select Pic 2</button><br/><br/> 
+
+        <label>Pic 3 *</label>
+        <button mdbBtn (click)="addPic3()" color="default" rounded="true" mdbWavesEffect>Select Pic 3</button><br/><br/> 
+
+        <div class="md-form md-outline">
+            <textarea type="text" id="description" formControlName="description" class="form-control md-textarea" rows="3" mdbInput></textarea>
+            <label for="description">Blog Description *</label>
+        </div>
+
+        <input mdbBtn color="primary" value="Add Blog" (click)="addBlog()">
     </form>
 </div>
