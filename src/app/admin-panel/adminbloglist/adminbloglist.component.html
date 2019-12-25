@@ -38,22 +38,26 @@
         </div>
     </ng-template>
     <ng-template #elseblock>
-        <div *ngFor="let post of latestPosts">
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4 waves-light" mdbWavesEffect>
-                        <img class="img-fluid" src={{post.coverPhoto}} alt="Sample image">
-                        <a>
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-7">
-                    <h3 class="font-weight-bold mb-3"><strong>{{post.title}}</strong></h3>
-                    <a mdbBtn color="warning" outline="true" (click)="editBlog(post)" mdbWavesEffect>Edit</a>
-                    <a mdbBtn color="danger" outline="true" (click)="deleteBlog(post)" mdbWavesEffect>Delete</a>
-                </div>  
-            </div><br/>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table mb-0">
+                <tr *ngFor="let post of latestPosts">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4 waves-light" mdbWavesEffect>
+                                <img class="img-fluid" src={{post.coverPhoto}} alt="Sample image">
+                                <a>
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <h3 class="font-weight-bold mb-3"><strong>{{post.title}}</strong></h3>
+                            <a mdbBtn color="warning" outline="true" (click)="editBlog(post)" mdbWavesEffect>Edit</a>
+                            <a mdbBtn color="danger" outline="true" (click)="deleteBlog(post)" mdbWavesEffect>Delete</a>
+                        </div>  
+                    </div><br/>
+                </tr>
+            </table>
         </div>    
     </ng-template>
 </section>
