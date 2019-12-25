@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {BlogFamily} from 'src/app/model/BlogFamily';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-footer',
@@ -10,7 +11,7 @@ import {BlogFamily} from 'src/app/model/BlogFamily';
 })
 export class FooterComponent implements OnInit {
   familyBlogForm: FormGroup;
-  constructor(private firebaseService:BlogsService) {}
+  constructor(private firebaseService:BlogsService,private toastr: ToastrService) {}
 
   ngOnInit() {
     this.firebaseService.getBlogFamily();
@@ -40,8 +41,7 @@ export class FooterComponent implements OnInit {
       mobile: this.familyBlogForm.get('mobile').value
     }
     this.firebaseService.addBlogFamily(familyMemberDetails);
-    alert("Congrats you are now a part of Priya Haridas Kotnis Fam!");
-    
+    this.toastr.success("Congrats you are now a part of Priya Haridas Kotnis Fam!",'Subscribed');
     this.initFormControls();
   }
 }

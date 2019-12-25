@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BlogData } from 'src/app/model/BlogData';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-adminblogedit',
@@ -21,7 +22,9 @@ export class AdminblogeditComponent implements OnInit {
   updateBlog:boolean = false;
 
   constructor(private route: ActivatedRoute,
-    private firebaseService: BlogsService,private imageService:NgxImageCompressService,
+    private firebaseService: BlogsService,
+    private imageService:NgxImageCompressService,
+    private toastr: ToastrService,
     private router: Router) { }
 
   ngOnInit() {
@@ -74,7 +77,7 @@ export class AdminblogeditComponent implements OnInit {
         blog.pic3= this.pic3;
       }
       this.firebaseService.updateBlog(blog);
-      alert("Update Success");
+      this.toastr.warning("Updated Data Success",'Blog Updated');
     }
     else
     {
@@ -90,7 +93,7 @@ export class AdminblogeditComponent implements OnInit {
         time: new Date().toString()
       };
       this.firebaseService.pushData(blogData);
-      alert("Upload Success");
+      this.toastr.success("Uploaded Blog Successfully",'Blog Uploaded');
     }
     this.router.navigateByUrl("/admin")
   }

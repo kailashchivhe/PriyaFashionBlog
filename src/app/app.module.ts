@@ -32,6 +32,8 @@ import { CategoriesComponent } from './body/categories/categories.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {NgxImageCompressService} from 'ngx-image-compress';
 import { FamDetailsComponent } from './admin-panel/fam-details/fam-details.component';
+import { ToastrModule } from 'ngx-toastr'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,15 @@ import { FamDetailsComponent } from './admin-panel/fam-details/fam-details.compo
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {positionClass:'toast-top-full-width', 
+      closeButton: true,
+      timeOut: 4000,
+      enableHtml: true,
+      progressAnimation: 'increasing'
+      })
   ],
   providers: [NgxImageCompressService],
   bootstrap: [AppComponent]

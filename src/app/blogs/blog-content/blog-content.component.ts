@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlogData } from 'src/app/model/BlogData';
 import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-blog-content',
@@ -11,13 +12,15 @@ import { Router } from '@angular/router';
 export class BlogContentComponent implements OnInit {
   slides=[];
   post:BlogData;
-  constructor(private blogService:BlogsService,private router:Router) { }
+  constructor(private blogService:BlogsService,
+    private toastr: ToastrService,
+    private router:Router) { }
 
   ngOnInit() {
     this.post = this.blogService.getSelectedBlog();
     if( this.post == null )
     {
-      alert("Please Select a Blog");
+      this.toastr.error("Please Select a Blog",'Error');
       this.router.navigateByUrl("/");
     }
     else{
