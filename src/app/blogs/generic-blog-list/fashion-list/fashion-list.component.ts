@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogData } from 'src/app/model/BlogData';
+import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fashion-list',
@@ -8,27 +10,36 @@ import { BlogData } from 'src/app/model/BlogData';
 })
 export class FashionListComponent implements OnInit{
   categoryName:String = "FASHION";
-  latestPosts:BlogData[]=[
-    {type:"fashion",title:"Demo",subtitle:"subtitle",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.",
-    coverPhoto: "https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg",
-    pic1: "https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg",
-    pic2: "https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg",
-    pic3: "https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg"},
-    {type:"fashion",title:"Demo",subtitle:"subtitle",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.",
-    coverPhoto: "https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg",
-    pic1: "https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg",
-    pic2: "https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg",
-    pic3: "https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg"},
-    {type:"fashion",title:"Demo",subtitle:"subtitle",description:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.",
-    coverPhoto: "https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg",
-    pic1: "https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg",
-    pic2: "https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg",
-    pic3: "https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg"},
-  ]
-  constructor() {
+  latestPosts:BlogData[];
+  bShowloader:boolean=true;
+  constructor(private blogService:BlogsService,private router:Router) {
   }
 
   ngOnInit() {
+    var data = this.blogService.getAllBlogs();
+    data.snapshotChanges().subscribe(item => {
+      this.latestPosts = [];
+      item.forEach(element => {
+        var y = element.payload.toJSON();
+        y["$key"] = element.key;
+        let data = y as BlogData;
+        if( data.type === "fashion" )
+        {
+          this.latestPosts.push(y as BlogData);
+        }
+      })
+      this.bShowloader=false;
+    })
+  }
+
+  navigateToBlogContent(blogKey:string){
+    this.latestPosts.forEach(post=>{
+      if( post.$key === blogKey )
+      {
+        this.blogService.setSelectedBlog(post);
+      }
+    });
+    this.router.navigateByUrl("/content");
   }
 
   getUrl()

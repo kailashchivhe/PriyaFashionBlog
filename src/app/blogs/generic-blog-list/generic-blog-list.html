@@ -12,7 +12,35 @@
 </div>
 <section class="site-section py-lg">
   <div class="container">
-      <section class="my-5">
+    <section class="my-5">
+      <div *ngIf="bShowloader; then ifblock; else elseblock"></div> 
+      <ng-template #ifblock>
+        <div class="spinner-grow text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-light" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-dark" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </ng-template>
+      <ng-template #elseblock>
         <div *ngFor="let post of latestPosts">
           <div class="row">
             <div class="col-lg-5">
@@ -26,10 +54,11 @@
             <div class="col-lg-7">
               <h3 class="font-weight-bold mb-3"><strong>{{post.title}}</strong></h3>
               <p>{{post.description}}</p>
-              <a mdbBtn color="success" mdbWavesEffect>Read more</a>
+              <a mdbBtn color="success" outline="true" mdbWavesEffect (click)="navigateToBlogContent(post.$key)">Read more</a>
             </div>
           </div><br/>
         </div>
+      </ng-template>
       </section>
   </div>
 </section>

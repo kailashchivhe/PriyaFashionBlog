@@ -7,10 +7,10 @@
         <div class="col-md-3 ml-auto">
             <h3 class="footer-heading mb-4 text-black">Quick Menu</h3>
             <ul class="list-unstyled float-left mr-5">
-                <li><a href="#">Fashion</a></li>
-                <li><a href="#">Beauty</a></li>
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Travel</a></li>
+                <li><a href="blogs/fashion">Fashion</a></li>
+                <li><a href="blogs/beauty">Beauty</a></li>
+                <li><a href="blogs/food">Food</a></li>
+                <li><a href="blogs/travel">Travel</a></li>
             </ul>
         </div>
         <div class="col-md-4">
@@ -18,27 +18,29 @@
                 <div>
                     <h3 class="footer-heading mb-4 text-black">Join My Fam!</h3>
                     <form class="form-footer-subscribe">
-                        <div class="form-group ">
+                        <div [formGroup]="familyBlogForm">
                             <div class="md-form">
-                                <input mdbInput placeholder="Enter your NAME here" type="text" id="name" class="form-control" >
+                                <input mdbInput formControlName="name" placeholder="Enter your name here" type="text" id="name" class="form-control" >
                                 <label for="name">Name *</label>
                             </div>
                             <div class="md-form">
-                                <input mdbInput placeholder="Enter your Email ID here" type="text" id="email" class="form-control" >
+                                <input mdbInput formControlName="email" placeholder="Enter email id here" type="text" id="email" class="form-control" >
                                 <label for="email">EmailID *</label>
                             </div>
                             <div class="md-form">
-                                <input mdbInput placeholder="Enter your Mobile number here" type="text" id="phone" class="form-control">
-                                <label for="phone">Mobile Number *</label>
+                                <input mdbInput formControlName="mobile" placeholder="Enter your mobile number here" type="text" id="mobile" class="form-control">
+                                <label for="mobile">Mobile Number *</label>
                             </div>
-                            <input mdbBtn color="primary" value="Subscribe">
+                            <button mdbBtn color="primary" [disabled]="!familyBlogForm.valid" (click)="addFamilyBlog()"class="font-weight-bold mb-3">
+                                Subscribe
+                            </button>
                         </div>
                     </form>
                     <p>
-                        <a href="#"><span class="fa fa-instagram fa-2x p-2"></span></a>
-                        <a href="#"><span class="fa fa-facebook fa-2x p-2"></span></a>
-                        <a href="#"><span class="fa fa-twitter fa-2x p-2"></span></a>
-                        <a href="#"><span class="fa fa-youtube fa-2x p-2"></span></a>
+                        <a href="https://www.instagram.com/flowerfairyofficial/?hl=en" target="_blank"><span class="fa fa-instagram fa-2x p-2"></span></a>
+                        <a href="https://www.facebook.com/priyaharidaskotnis/"target="_blank"><span class="fa fa-facebook fa-2x p-2"></span></a>
+                        <a href="https://www.youtube.com/channel/UCpZjcl9EzcqVJ1CPu48QuBw" target="_blank"><span class="fa fa-twitter fa-2x p-2"></span></a>
+                        <a href="https://twitter.com/flowerfairy1991?lang=en" target="_blank"><span class="fa fa-youtube fa-2x p-2"></span></a>
                     </p>
                 </div>
             </div>

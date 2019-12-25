@@ -1,18 +1,12 @@
 <div class="site-wrap">
-    <header class="site-navbar" role="banner" style="background-color: #fbceb1;">
-        <!-- <div class="container-fluid"> -->
-            <!-- <div class="row align-items-center"> -->
-                <!-- <h1 class="col-6 logo"> -->
-                    <a href="#" class="headerText">PRIYA HARIDAS KOTNIS</a>
-                <!-- </h1>   -->
-            <!-- </div> -->
-            <app-menu></app-menu> 
-        <!-- </div> -->
+    <header class="site-navbar" role="banner" [ngStyle]="{'background-color': getHeaderFooterColor()}">
+        <a href="/" class="headerText">PRIYA HARIDAS KOTNIS</a>
+        <app-menu></app-menu>
     </header>
     <div>
         <router-outlet></router-outlet>
     </div>
-    <div class="site-footer" style="background-color: #fbceb1;">
+    <div class="site-footer" [ngStyle]="{'background-color': getHeaderFooterColor()}">
         <app-footer></app-footer>
     </div>
 </div>

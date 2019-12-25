@@ -1,4 +1,7 @@
-export interface BlogData{
+import { FirebaseOperation } from '@angular/fire/database/interfaces';
+
+export class BlogData{
+    $key:string;
     type: String;
     title: String;
     subtitle: String;
@@ -7,4 +10,5 @@ export interface BlogData{
     pic1: String;
     pic2: String;
     pic3: String;
+    time: String;
 }

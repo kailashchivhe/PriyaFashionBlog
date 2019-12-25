@@ -10,22 +10,36 @@ import { BlogData } from 'src/app/model/BlogData';
   styleUrls: ['./adminbloglist.component.scss']
 })
 export class AdminbloglistComponent implements OnInit {
-  pro: BlogData[];
-  subscription: Subscription;
+  latestPosts: BlogData[];
+  bShowloader:boolean = true;
   constructor(private firebaseService: BlogsService,
     private router: Router,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
+    var data = this.firebaseService.getAllBlogs();
+    data.snapshotChanges().subscribe(item => {
+      this.latestPosts = [];
+      item.forEach(element => {
+        var y = element.payload.toJSON();
+        y["$key"] = element.key;
+        this.latestPosts.push(y as BlogData);
+      })
+      this.bShowloader = false;
+    })
   }
-  ngOnDestroy() 
-  {
-    this.subscription.unsubscribe();
-  }
-
-  // Listener to add new project
+  
   onNewProject() 
   {
     this.router.navigate(['new'], {relativeTo: this.route});
+  }
+
+  editBlog(post:BlogData){
+    this.firebaseService.setSelectedBlog(post);
+    this.router.navigate(['new'], {relativeTo: this.route});
+  }
+
+  deleteBlog(post:BlogData){
+    this.firebaseService.deleteBlog(post.$key);
   }
 }

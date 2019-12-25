@@ -1,35 +1,67 @@
 <div class="row">
     <div class="col-lg-8 mb-5 mb-lg-0">
-        <div *ngFor="let post of latestPosts">
-            <div class="row">
-                <div class="col-lg-5">
-                    <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4 waves-light" mdbWavesEffect>
-                        <img class="img-fluid" src={{post.coverPhoto}} alt="Sample image">
-                        <a>
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
-                    </div>
+        <div *ngIf="bShowloader; then ifblock; else elseblock"></div> 
+            <ng-template #ifblock>
+                <div class="spinner-grow text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
                 </div>
-                <div class="col-lg-7">
-                    <span class="post-category text-white bg-success mb-3">{{post.type}}</span>
-                    <h3 class="font-weight-bold mb-3"><strong>{{post.title}}</strong></h3>
-                    <p>{{post.subtitle}}</p>
-                    <a mdbBtn color="default" mdbWavesEffect>Read more</a>
-                </div>  
-            </div><br/>
-        </div>
+                <div class="spinner-grow text-secondary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-success" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-danger" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-warning" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-info" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-light" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-dark" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </ng-template>
+            <ng-template #elseblock>
+                <div *ngFor="let post of latestPosts">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4 waves-light" mdbWavesEffect>
+                                <img class="img-fluid" src={{post.coverPhoto}} alt="Sample image">
+                                <a>
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <span class="post-category text-white bg-success mb-3">{{post.type}}</span>
+                            <h3 class="font-weight-bold mb-3"><strong>{{post.title}}</strong></h3>
+                            <p>{{post.subtitle}}</p>
+                            <button mdbBtn color="default" outline="true" mdbWavesEffect (click)="navigateToBlogContent(post.$key)">
+                                Read more
+                            </button>
+                        </div>  
+                    </div><br/>
+                </div>    
+            </ng-template>
     </div>
     <div class="col-lg-4 pl-lg-4">
         <div class="bio text-center">
-            <img src="../../assets/images_data/bio_pic_2.jpg" alt="Image Placeholder" class="img-fluid mb-5">
+            <img src="../../assets/images_data/bio_pic_2.jpg" alt="Image Placeholder" class="img-fluid mb-2">
             <div class="bio-body">
                 <h2 class="font-weight-bold mb-3">Priya Haridas Kotnis</h2>
+                <span class="post-category text-white bg-danger mb-3">ABOUT</span>
                 <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>
                 <p class="social">
-                    <a href="#" class="p-2"><span class="fa fa-instagram fa-2x p-2"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-facebook fa-2x p-2"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-youtube fa-2x p-2"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-twitter fa-2x p-2"></span></a>
+                    <a href="https://www.instagram.com/flowerfairyofficial/?hl=en" target="_blank" class="p-2"><span class="fa fa-instagram fa-2x p-2"></span></a>
+                    <a href="https://www.facebook.com/priyaharidaskotnis/" target="_blank" class="p-2"><span class="fa fa-facebook fa-2x p-2"></span></a>
+                    <a href="https://www.youtube.com/channel/UCpZjcl9EzcqVJ1CPu48QuBw" target="_blank" class="p-2"><span class="fa fa-youtube fa-2x p-2"></span></a>
+                    <a href="https://twitter.com/flowerfairy1991?lang=en" target="_blank" class="p-2"><span class="fa fa-twitter fa-2x p-2"></span></a>
                 </p>
             </div>
         </div>

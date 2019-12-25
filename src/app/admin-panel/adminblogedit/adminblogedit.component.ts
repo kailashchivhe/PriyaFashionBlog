@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BlogData } from 'src/app/model/BlogData';
 import { NgxImageCompressService } from 'ngx-image-compress';
 
@@ -18,6 +18,7 @@ export class AdminblogeditComponent implements OnInit {
   pic1: String;
   pic2: String;
   pic3: String;
+  updateBlog:boolean = false;
 
   constructor(private route: ActivatedRoute,
     private firebaseService: BlogsService,private imageService:NgxImageCompressService,
@@ -27,19 +28,19 @@ export class AdminblogeditComponent implements OnInit {
     this.initFormControls();
     this.firebaseService.getAllBlogs();
   }
+  
+  ngOnDestroy(){
+    this.updateBlog = false;
+  }
 
   onSubmit() 
   {
     this.onCancel();
   }
 
-  onAddBlog() 
+  onDeleteBook(key: string) 
   {
-  }
-
-  onDeleteBook(index: number) 
-  {
-
+    this.firebaseService.deleteBlog(key);
   }
 
   onCancel() 
@@ -47,34 +48,61 @@ export class AdminblogeditComponent implements OnInit {
     this.router.navigate(['../'], {relativeTo: this.route});
   }
 
-  private initForm() 
-  {
-  }
-
   addBlog(){
-    let blogData:BlogData = {
-      type: this.blogForm.get('type').value,
-      title: this.blogForm.get('title').value,
-      subtitle: this.blogForm.get('subtitle').value,
-      description: this.blogForm.get('description').value,
-      coverPhoto: this.coverPic,
-      pic1: this.pic1,
-      pic2: this.pic2,
-      pic3: this.pic3
+    if(this.updateBlog)
+    {
+      this.updateBlog = false;
+      let blog:BlogData = this.firebaseService.getSelectedBlog();
+      blog.type = this.blogForm.get('type').value;
+      blog.title = this.blogForm.get('title').value;
+      blog.subtitle= this.blogForm.get('subtitle').value;
+      blog.description= this.blogForm.get('description').value;
+      if( this.coverPic != null )
+      {
+        blog.coverPhoto= this.coverPic;
+      }
+      if( this.pic1 != null )
+      {
+        blog.pic1= this.pic1;
+      }
+      if( this.pic2 != null )
+      {
+        blog.pic2= this.pic2;
+      }
+      if( this.pic3 != null )
+      {
+        blog.pic3= this.pic3;
+      }
+      this.firebaseService.updateBlog(blog);
+      alert("Update Success");
     }
-    this.firebaseService.pushData(blogData);
-    alert("Upload Success");
-    this.initFormControls();
+    else
+    {
+      let blogData= {
+        type: this.blogForm.get('type').value,
+        title: this.blogForm.get('title').value,
+        subtitle: this.blogForm.get('subtitle').value,
+        description: this.blogForm.get('description').value,
+        coverPhoto: this.coverPic,
+        pic1: this.pic1,
+        pic2: this.pic2,
+        pic3: this.pic3,
+        time: new Date().toString()
+      };
+      this.firebaseService.pushData(blogData);
+      alert("Upload Success");
+    }
+    this.router.navigateByUrl("/admin")
   }
 
   addCoverPic()
   {
     this.imageService.uploadFile().then(({image, orientation}) => {
     
-      this.imageService.compressFile(image, orientation, 40, 40).then(
+      this.imageService.compressFile(image, orientation, 50, 50).then(
         result => {
           this.coverPic = result
-          console.warn('Size in bytes is now:', this.imageService.byteCount(result));
+          console.log('Size in bytes is now:', this.imageService.byteCount(result));
         }
       );
       
@@ -88,7 +116,7 @@ export class AdminblogeditComponent implements OnInit {
       this.imageService.compressFile(image, orientation, 40, 40).then(
         result => {
           this.pic1=result;
-          console.warn('Size in bytes is now:', this.imageService.byteCount(result));
+          console.log('Size in bytes is now:', this.imageService.byteCount(result));
         }
       );
       
@@ -102,7 +130,7 @@ export class AdminblogeditComponent implements OnInit {
       this.imageService.compressFile(image, orientation, 40, 40).then(
         result => {
           this.pic2=result;
-          console.warn('Size in bytes is now:', this.imageService.byteCount(result));
+          console.log('Size in bytes is now:', this.imageService.byteCount(result));
         }
       );
       
@@ -116,7 +144,7 @@ export class AdminblogeditComponent implements OnInit {
       this.imageService.compressFile(image, orientation, 40, 40).then(
         result => {
           this.pic3=result;
-          console.warn('Size in bytes is now:', this.imageService.byteCount(result));
+          console.log('Size in bytes is now:', this.imageService.byteCount(result));
         }
       );
       
@@ -125,16 +153,24 @@ export class AdminblogeditComponent implements OnInit {
 
   initFormControls()
   {
-    let title = '';
-    let subtitle = '';
-    let description = '';
+    let title;
+    let subtitle;
+    let description;
     let type;
 
+    if( this.firebaseService.getSelectedBlog() != null ){
+      this.updateBlog = true;
+      let blogData:BlogData = this.firebaseService.getSelectedBlog();
+      title = blogData.title;
+      subtitle = blogData.subtitle;
+      type= blogData.type;
+      description = blogData.description;
+    }
     this.blogForm = new FormGroup({
-      'title': new FormControl(title),
-      'subtitle': new FormControl(subtitle),
-      'type': new FormControl(type),
-      'description': new FormControl(description),
+      'title': new FormControl(title,Validators.required),
+      'subtitle': new FormControl(subtitle,Validators.required),
+      'type': new FormControl(type,Validators.required),
+      'description': new FormControl(description,Validators.required),
     });
   }
   

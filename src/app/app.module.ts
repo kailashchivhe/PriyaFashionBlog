@@ -52,7 +52,7 @@ import {NgxImageCompressService} from 'ngx-image-compress';
     FooterComponent,
     MenuComponent,
     LatestPostComponent,
-    CategoriesComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

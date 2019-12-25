@@ -1,4 +1,4 @@
-<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('../../assets/images_data/caraousel/cover_pic_3.jpg');">
+<div class="site-cover site-cover-sm same-height overlay single-page" [ngStyle]="{'background-image': getUrl()}">
     <div class="container">
       <div class="row same-height justify-content-center">
         <div class="col-md-12 col-lg-10">
@@ -20,16 +20,12 @@
         <div class="main-content">
           <div class="post-content-body">
             <p>{{post.description}}</p>
-            <div class="row mb-5 mt-5">
-              <div class="col-md-6 mb-4">
-                <img src={{post.pic1}} alt="Image placeholder" class="img-fluid rounded">
-              </div>
-              <div class="col-md-6 mb-4">
-                <img src={{post.pic2}} alt="Image placeholder" class="img-fluid rounded">
-              </div>
-            </div>
             <div class="col-md-15 mb-4">
-              <img src={{post.pic3}} alt="Image placeholder" style="width: 100%;">
+              <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+                  <mdb-carousel-item *ngFor="let data of slides">
+                    <img class="d-block w-100" [src]=data>
+                  </mdb-carousel-item>
+              </mdb-carousel>
             </div>    
           </div>
         </div>

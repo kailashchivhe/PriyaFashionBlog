@@ -31,7 +31,9 @@
         <div class="column" *ngFor="let edges of instaData.graphql.user.edge_owner_to_timeline_media.edges; let index=index">
             <div *ngIf="index < 6; then ifblock"></div>
             <ng-template #ifblock>
-                    <img [src]="edges.node.display_url" alt="Snow" style="width:100%">
+                <div class="card">
+                    <img class="card-body bg-dark" [src]="edges.node.display_url" alt="Snow" style="width:100%;height: 450px;">
+                </div>
             </ng-template>
         </div>
     </div>    
