@@ -2,9 +2,13 @@
     <div class="col-xs-12">
       <button mdbBtn color="success" (click)="onNewProject()">Add New Blog</button>
     </div>
+    <div class="col-xs-12">
+        <button mdbBtn color="primary" (click)="displayFamDetails()">Display My Fam Details</button>
+    </div>
 </div>
 <hr>
-<section class="my-5">
+<section class="my-3">
+    <h2 class="font-weight-bold mb-3">Blog List</h2>
     <div *ngIf="bShowloader; then ifblock; else elseblock"></div> 
     <ng-template #ifblock>
         <h3 class="font-weight-bold mb-3">Loading Blogs</h3>

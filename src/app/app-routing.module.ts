@@ -11,6 +11,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminblogstartComponent } from './admin-panel/adminblogstart/adminblogstart.component';
 import { AdminblogeditComponent } from './admin-panel/adminblogedit/adminblogedit.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FamDetailsComponent } from './admin-panel/fam-details/fam-details.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'admin', component:AdminPanelComponent, children:[
     { path: '', component: AdminblogstartComponent },
     { path: 'new', component: AdminblogeditComponent },
+    { path: 'famdetails', component: FamDetailsComponent },
     { path: '**', component: PageNotFoundComponent }
     ] 
   },

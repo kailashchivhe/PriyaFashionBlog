@@ -31,6 +31,7 @@ import { LatestPostComponent } from './body/latest-post/latest-post.component';
 import { CategoriesComponent } from './body/categories/categories.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import {NgxImageCompressService} from 'ngx-image-compress';
+import { FamDetailsComponent } from './admin-panel/fam-details/fam-details.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {NgxImageCompressService} from 'ngx-image-compress';
     FooterComponent,
     MenuComponent,
     LatestPostComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    FamDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

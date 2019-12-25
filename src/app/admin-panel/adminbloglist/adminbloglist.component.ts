@@ -34,6 +34,11 @@ export class AdminbloglistComponent implements OnInit {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
+  displayFamDetails() 
+  {
+    this.router.navigate(['famdetails'], {relativeTo: this.route});
+  }
+
   editBlog(post:BlogData){
     this.firebaseService.setSelectedBlog(post);
     this.router.navigate(['new'], {relativeTo: this.route});
