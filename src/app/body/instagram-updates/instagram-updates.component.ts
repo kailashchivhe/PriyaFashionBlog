@@ -20,6 +20,11 @@ export class InstagramUpdatesComponent implements OnInit {
     });
   }
 
+  navigateToInstagra()
+  {
+    window.open("https://www.instagram.com/flowerfairyofficial/?hl=en","_blanks")
+  }
+
   ngOnDestroy()
   {
     this.instaService.getPosts().subscribe().unsubscribe();
