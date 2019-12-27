@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row mb-5">
         <div class="col-md-4">
-            <h3 class="footer-heading mb-4 text-black">About Me</h3>
+            <h3 class="font-weight-bold mb-3 text-black">About Me</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat reprehenderit magnam deleniti quasi saepe, consequatur atque sequi delectus dolore veritatis obcaecati quae, repellat eveniet omnis, voluptatem in. Soluta, eligendi, architecto.</p>
         </div>
         <div class="col-md-3 ml-auto">
-            <h3 class="footer-heading mb-4 text-black">Quick Menu</h3>
+            <h3 class="font-weight-bold mb-3 text-black">Quick Menu</h3>
             <ul class="list-unstyled float-left mr-5">
                 <li><a href="blogs/fashion">Fashion</a></li>
                 <li><a href="blogs/beauty">Beauty</a></li>
@@ -16,20 +16,20 @@
         <div class="col-md-4">
             <div class="mb-5">
                 <div>
-                    <h3 class="footer-heading mb-4 text-black">Join My Fam!</h3>
+                    <h3 class="font-weight-bold mb-3 text-black">Join My Gang!</h3>
                     <form class="form-footer-subscribe">
                         <div [formGroup]="familyBlogForm">
                             <div class="md-form">
-                                <input mdbInput formControlName="name" placeholder="Enter your name here" type="text" id="name" class="form-control" >
-                                <label for="name">Name *</label>
+                                <input mdbInput formControlName="name" placeholder="eg. Rohan" type="text" id="name" class="form-control" >
+                                <label for="name">Name :</label>
                             </div>
                             <div class="md-form">
-                                <input mdbInput formControlName="email" placeholder="Enter email id here" type="text" id="email" class="form-control" >
-                                <label for="email">EmailID *</label>
+                                <input mdbInput formControlName="email" placeholder="eg. abc@gmail.com" type="text" id="email" class="form-control" >
+                                <label for="email">Email Address :</label>
                             </div>
                             <div class="md-form">
-                                <input mdbInput formControlName="mobile" placeholder="Enter your mobile number here" type="text" id="mobile" class="form-control">
-                                <label for="mobile">Mobile Number *</label>
+                                <input mdbInput formControlName="mobile" placeholder="eg. 1234567899" type="text" id="mobile" class="form-control">
+                                <label for="mobile">Mobile Number :</label>
                             </div>
                             <button mdbBtn color="primary" [disabled]="!familyBlogForm.valid" (click)="addFamilyBlog()"class="font-weight-bold mb-3">
                                 Subscribe
@@ -48,7 +48,7 @@
     </div>
     <div class="row">
         <div class="col-12 text-center">
-            <p>
+            <p class="font-weight-bold">
                 Copyright &copy; All rights reserved by Kailash Chivhe
             </p>
         </div>

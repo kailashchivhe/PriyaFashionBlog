@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: 'travel', component: TravelListComponent },
       { path: '**', component: PageNotFoundComponent }
     ]},
-  { path: 'content', component: BlogContentComponent },
+  { path: 'content/:key', component: BlogContentComponent },
   { path: 'admin', component:AdminPanelComponent, children:[
     { path: '', component: AdminblogstartComponent },
     { path: 'new', component: AdminblogeditComponent },
@@ -32,6 +32,7 @@ const routes: Routes = [
     { path: '**', component: PageNotFoundComponent }
     ] 
   },
+  { path: 'error', component: PageNotFoundComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 

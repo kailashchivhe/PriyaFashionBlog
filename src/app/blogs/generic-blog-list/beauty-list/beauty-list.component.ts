@@ -33,13 +33,7 @@ export class BeautyListComponent implements OnInit{
   }
 
   navigateToBlogContent(blogKey:string){
-    this.latestPosts.forEach(post=>{
-      if( post.$key === blogKey )
-      {
-        this.blogService.setSelectedBlog(post);
-      }
-    });
-    this.router.navigateByUrl("/content");
+    this.router.navigateByUrl(`/content/${blogKey}`);
   }
 
   getUrl()
