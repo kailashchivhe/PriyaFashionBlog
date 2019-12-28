@@ -32,9 +32,6 @@ export class BlogContentComponent implements OnInit {
               if( data.$key === key )
               {
                 this.post = data;
-                this.slides.push(this.post.pic1);
-                this.slides.push(this.post.pic2);
-                this.slides.push(this.post.pic3);
               }
             })
             this.bShowloader=false;

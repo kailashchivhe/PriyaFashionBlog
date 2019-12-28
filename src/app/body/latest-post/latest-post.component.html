@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="col-lg-5">
                             <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4 waves-light" mdbWavesEffect>
-                                <img class="img-fluid" src={{post.coverPhoto}} alt="Sample image">
+                                <img class="img-fluid" src={{post.coverPhoto}} alt="Sample image" (click)="navigateToBlogContent(post.$key)">
                                 <a>
                                     <div class="mask rgba-white-slight"></div>
                                 </a>
@@ -42,7 +42,7 @@
                         <div class="col-lg-7">
                             <span class="post-category text-white bg-primary mb-3">{{post.type}}</span>
                             <h3 class="font-weight-bold mb-3"><strong>{{post.title}}</strong></h3>
-                            <p>{{post.subtitle}}</p>
+                            <p>{{ post.time | date: 'EEEE, MMMM d, y' }}</p>
                             <button mdbBtn color="primary" outline="true" mdbWavesEffect (click)="navigateToBlogContent(post.$key)">
                                 Read more
                             </button>

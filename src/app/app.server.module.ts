@@ -21,7 +21,6 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AdminbloglistComponent } from './admin-panel/adminbloglist/adminbloglist.component';
-import { AdminblogdetailComponent } from './admin-panel/adminblogdetail/adminblogdetail.component';
 import { AdminblogeditComponent } from './admin-panel/adminblogedit/adminblogedit.component';
 import { AdminblogstartComponent } from './admin-panel/adminblogstart/adminblogstart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -50,7 +49,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TravelListComponent,
     AdminPanelComponent,
     AdminbloglistComponent,
-    AdminblogdetailComponent,
     AdminblogeditComponent,
     AdminblogstartComponent,
     PageNotFoundComponent,

@@ -35,7 +35,7 @@
               <span class="post-category text-white bg-success mb-3">{{post.type}}</span>
               <h1 class="mb-4"><a href="#">{{post.title}}</a></h1>
               <div class="post-meta align-items-center text-center">
-                <span>&nbsp;-&nbsp; February 10, 2019</span>
+                <span>&nbsp;-&nbsp;{{ post.time | date: 'EEEE, MMMM d, y' }}</span>
               </div>
             </div>
           </div>
@@ -48,13 +48,12 @@
         <div class="row blog-entries element-animate">
           <div class="main-content">
             <div class="post-content-body">
+              <h2 class="font-weight-bold mb-3">{{post.subtitle}}</h2>
               <p>{{post.description}}</p>
               <div class="col-md-15 mb-4">
-                <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
-                    <mdb-carousel-item *ngFor="let data of slides">
-                      <img class="d-block w-100" [src]=data>
-                    </mdb-carousel-item>
-                </mdb-carousel>
+                  <img class="img-fluid card-body bg-dark pic1"  [src]="post.pic1">
+                  <img class="img-fluid card-body bg-dark pic2"  [src]="post.pic2">
+                  <img class="img-fluid card-body bg-dark pic3"  [src]="post.pic3">
               </div>    
             </div>
           </div>

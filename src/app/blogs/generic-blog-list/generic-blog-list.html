@@ -53,8 +53,9 @@
               </div>
             </div>
             <div class="col-lg-7">
-              <h3 class="font-weight-bold mb-3"><strong>{{post.title}}</strong></h3>
-              <p>{{post.description}}</p>
+              <h1 class="font-weight-bold mb-3"><strong>{{post.title}}</strong></h1>
+              <p><strong>{{ post.time | date: 'EEEE, MMMM d, y' }}</strong></p>
+              <p>{{post.description | shortDescription }}</p>
               <a mdbBtn color="success" outline="true" mdbWavesEffect (click)="navigateToBlogContent(post.$key)">Read more</a>
             </div>
           </div><br/><hr><br/>

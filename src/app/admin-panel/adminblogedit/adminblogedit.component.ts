@@ -101,11 +101,11 @@ export class AdminblogeditComponent implements OnInit {
   addCoverPic()
   {
     this.imageService.uploadFile().then(({image, orientation}) => {
-    
       this.imageService.compressFile(image, orientation, 50, 50).then(
         result => {
           this.coverPic = result
           console.log('Size in bytes is now:', this.imageService.byteCount(result));
+          
         }
       );
       
@@ -115,7 +115,6 @@ export class AdminblogeditComponent implements OnInit {
   addPic1()
   {
     this.imageService.uploadFile().then(({image, orientation}) => {
-    
       this.imageService.compressFile(image, orientation, 40, 40).then(
         result => {
           this.pic1=result;
@@ -129,7 +128,6 @@ export class AdminblogeditComponent implements OnInit {
   addPic2()
   {
     this.imageService.uploadFile().then(({image, orientation}) => {
-    
       this.imageService.compressFile(image, orientation, 40, 40).then(
         result => {
           this.pic2=result;
@@ -143,7 +141,6 @@ export class AdminblogeditComponent implements OnInit {
   addPic3()
   {
     this.imageService.uploadFile().then(({image, orientation}) => {
-    
       this.imageService.compressFile(image, orientation, 40, 40).then(
         result => {
           this.pic3=result;
@@ -160,7 +157,6 @@ export class AdminblogeditComponent implements OnInit {
     let subtitle;
     let description;
     let type;
-
     if( this.firebaseService.getSelectedBlog() != null ){
       this.updateBlog = true;
       let blogData:BlogData = this.firebaseService.getSelectedBlog();
