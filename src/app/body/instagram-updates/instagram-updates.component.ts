@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InstaServiceService } from 'src/app/sharedServices/instaservice/insta-service.service';
 import { filter } from 'rxjs/operators';
 import { IData } from 'src/app/model/IData';
+import { IEdges } from 'src/app/model/IEdges';
 
 @Component({
   selector: 'app-instagram-updates',
@@ -10,12 +11,21 @@ import { IData } from 'src/app/model/IData';
 })
 export class InstagramUpdatesComponent implements OnInit {
   public bShowloader = true;
-  public instaData:IData;
+  public instaImages=[];
   constructor(private instaService:InstaServiceService) { }
   
   ngOnInit() {
     this.instaService.getPosts().subscribe(data=>{
-      this.instaData = data;
+      let edges:IEdges[]= data.graphql.user.edge_owner_to_timeline_media.edges;
+      let i = 0;
+      for( var edge of edges )
+      {
+        if(!edge.node.is_video && i<6)
+        {
+          this.instaImages.push(edge.node.display_url);
+          i++;
+        }
+      }
       this.bShowloader = false;
     });
   }

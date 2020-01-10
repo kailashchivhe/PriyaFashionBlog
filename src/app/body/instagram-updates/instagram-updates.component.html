@@ -1,4 +1,3 @@
-
 <div *ngIf="bShowloader; then ifblock; else elseblock"></div> 
 <ng-template #ifblock>
         <h3 class="font-weight-bold mb-3">Loading Instagram Updates</h3>
@@ -29,15 +28,12 @@
 </ng-template>
 <ng-template #elseblock>
     <div class="row">
-        <div class="column" *ngFor="let edges of instaData.graphql.user.edge_owner_to_timeline_media.edges; let index=index">
-            <div *ngIf="index < 6; then ifblock"></div>
-            <ng-template #ifblock>
-                <a>
-                    <div class="card" (click)="navigateToInstagra()">
-                        <img class="card-body bg-dark" [src]="edges.node.display_url" alt="Snow" style="width:100%;height: 450px;">
-                    </div>
-                </a>
-            </ng-template>
+        <div class="column" *ngFor="let image of instaImages">
+            <a>
+                <div class="card" (click)="navigateToInstagra()">
+                    <img class="card-body bg-dark" [src]="image" alt="Snow" style="width:100%;height: 450px;">
+                </div>
+            </a>
         </div>
     </div>    
 </ng-template>
