@@ -4,20 +4,22 @@
         <span class="anchor" id="formLogin"></span>
         <div class="card rounded-0">
           <div class="card-header">
-            <h3 class="mb-0">Admin Login</h3>
+            <h2 class="font-weight-bold mb-3">Admin Login</h2>
           </div>
           <div class="card-body">
-            <form class="form">
-              <div class="form-group">
-                <label for="uname1">User Name</label>
-                <input type="text" class="form-control rounded-0" [(ngModel)]="email" name="email" required>
+            <div [formGroup]="adminLoginForm">
+              <div class="md-form">
+                  <input mdbInput formControlName="email" type="text" id="email" class="form-control" >
+                  <label for="email">User Name</label>
               </div>
-              <div class="form-group">
-                <label>Password</label>
-                <input type="password" class="form-control rounded-0" [(ngModel)]="password" name="password" required>
+              <div class="md-form">
+                  <input mdbInput formControlName="password" type="password" id="password" class="form-control" >
+                  <label for="password">Password</label>
               </div>
-              <button type="button" (click)="loginUser()" class="btn btn-success float-right">Login</button>
-            </form>
+              <button mdbBtn color="success" [disabled]="!adminLoginForm.valid" (click)="loginUser()"class="font-weight-bold mb-3">
+                  Login
+              </button>
+            </div>
           </div>
         </div>
       </div>
