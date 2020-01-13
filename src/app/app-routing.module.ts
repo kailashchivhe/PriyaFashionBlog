@@ -12,6 +12,8 @@ import { AdminblogstartComponent } from './admin-panel/adminblogstart/adminblogs
 import { AdminblogeditComponent } from './admin-panel/adminblogedit/adminblogedit.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FamDetailsComponent } from './admin-panel/fam-details/fam-details.component';
+import { AuthGuardService } from './guards/auth-guard.service';
+import { AdminLoginComponent } from './admin-panel/admin-login/admin-login.component';
 
 
 const routes: Routes = [
@@ -25,7 +27,10 @@ const routes: Routes = [
       { path: '**', component: PageNotFoundComponent }
     ]},
   { path: 'content/:key', component: BlogContentComponent },
-  { path: 'admin', component:AdminPanelComponent, children:[
+  { path: 'admin' , component:AdminLoginComponent },
+  { path: 'admin/panel', component:AdminPanelComponent,
+    canActivate: [AuthGuardService],
+    children:[
     { path: '', component: AdminblogstartComponent },
     { path: 'new', component: AdminblogeditComponent },
     { path: 'famdetails', component: FamDetailsComponent },

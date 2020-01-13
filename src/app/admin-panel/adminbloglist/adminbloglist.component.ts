@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BlogData } from 'src/app/model/BlogData';
+import { AuthService } from 'src/app/sharedServices/authService/auth.service';
 
 @Component({
   selector: 'app-adminbloglist',
@@ -13,7 +14,7 @@ export class AdminbloglistComponent implements OnInit {
   latestPosts: BlogData[];
   bShowloader:boolean = true;
   constructor(private firebaseService: BlogsService,
-    private router: Router,
+    private router: Router,private _authService:AuthService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -46,5 +47,10 @@ export class AdminbloglistComponent implements OnInit {
 
   deleteBlog(post:BlogData){
     this.firebaseService.deleteBlog(post.$key);
+  }
+
+  logout()
+  {
+    this._authService.logoutUser();
   }
 }

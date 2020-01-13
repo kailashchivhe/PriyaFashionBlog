@@ -34,6 +34,8 @@ import { FamDetailsComponent } from './admin-panel/fam-details/fam-details.compo
 import { ToastrModule } from 'ngx-toastr'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShortDescriptionPipe } from './pipes/short-description.pipe';
+import { AuthGuardService } from './guards/auth-guard.service';
+import { AdminLoginComponent } from './admin-panel/admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { ShortDescriptionPipe } from './pipes/short-description.pipe';
     LatestPostComponent,
     CategoriesComponent,
     FamDetailsComponent,
-    ShortDescriptionPipe
+    ShortDescriptionPipe,
+    AdminLoginComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -79,7 +82,7 @@ import { ShortDescriptionPipe } from './pipes/short-description.pipe';
       progressAnimation: 'increasing'
       })
   ],
-  providers: [NgxImageCompressService],
+  providers: [NgxImageCompressService,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
