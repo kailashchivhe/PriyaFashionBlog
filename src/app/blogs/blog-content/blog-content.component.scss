@@ -1,13 +1,11 @@
 .pic1 {
-    float: left;
-    margin-left: 0%;
+    margin-left: 10%;
 }
 .pic2 {
-    float: right;
-    margin-right: 0%;
+    margin-left: 10%;
 }
 .pic3 {
-    margin-left: 30%;
+    margin-left: 10%;
 }
 @media screen and (max-width: 500px) {
     .pic3 {
@@ -17,33 +15,31 @@
         margin-left: 0%;
     }
     .pic2 {
-        margin-right: 0%;
+        margin-left: 0%;
     }
 }
 
 @media screen and (max-width: 1100px) and (min-width:801px){
-    .pic3 {
-        margin-left: 25%;
-    }
     .pic1 {
-        margin-left: 0%;
+        margin-left: 15%;
     }
     .pic2 {
-        margin-right: 0%;
+        margin-left: 15%;
     }
+    .pic3 {
+        margin-left: 15%;
+    }  
 }
 
 @media screen and (max-width: 800px) and (min-width:501px){
-    .pic3 {
-        margin-left: 20%;
-    }
     .pic1 {
-        float: left;
-        margin-left: 20%;
+        margin-left: 15%;
     }
     .pic2 {
-        margin-left: 20%;
-        float: left;
+        margin-left: 15%;
+    }
+    .pic3 {
+        margin-left: 15%;
     }
 }
 p{

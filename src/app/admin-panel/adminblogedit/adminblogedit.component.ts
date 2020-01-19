@@ -95,7 +95,7 @@ export class AdminblogeditComponent implements OnInit {
       this.firebaseService.pushData(blogData);
       this.toastr.success("Uploaded Blog Successfully",'Blog Uploaded');
     }
-    this.router.navigateByUrl("/admin")
+    this.router.navigateByUrl("/admin/panel")
   }
 
   addCoverPic()

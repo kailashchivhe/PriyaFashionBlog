@@ -17,6 +17,12 @@ export class BlogsService {
     return this.blogsList;
   }
 
+  getLatestBlogs()
+  {
+    this.blogsList = this.firebase.list('blogs/',ref => ref.limitToLast(3));
+    return this.blogsList;
+  }
+
   getBlogFamily()
   {
     this.blogFamily = this.firebase.list('blogFamily/');

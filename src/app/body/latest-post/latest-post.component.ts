@@ -15,19 +15,16 @@ export class LatestPostComponent implements OnInit {
   public bShowloader = true;
 
   ngOnInit() {
-    var data = this.blogService.getAllBlogs();
+    var data = this.blogService.getLatestBlogs();
     let cnt = 0;
     data.snapshotChanges().subscribe(item => {
-      this.latestPosts = [];
+      let posts = [];
       item.forEach(element => {
         var y = element.payload.toJSON();
         y["$key"] = element.key;
-        if( cnt < 3 )
-        {
-          this.latestPosts.push(y as BlogData);
-          cnt=cnt+1;
-        }
+        posts.push(y as BlogData);
       })
+      this.latestPosts = posts.reverse();
       this.bShowloader=false;
     })
   }
