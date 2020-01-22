@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['../generic-blog-list.scss']
 })
 export class TravelListComponent implements OnInit{
-  categoryName:String = "TRAVEL";
+  categoryName:string = "TRAVEL";
   latestPosts:BlogData[];
   bShowloader:boolean=true;
   constructor(private blogService:BlogsService,private router:Router) { 

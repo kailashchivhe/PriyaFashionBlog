@@ -36,8 +36,7 @@
               "node_modules/ngx-toastr/toastr.css",
               "node_modules/ngx-toastr/toastr-old.css"
             ],
-            "scripts": [
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
