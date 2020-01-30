@@ -7,25 +7,38 @@ import { BlogData } from '../../model/BlogData';
 })
 export class BlogsService {
   blogsList: AngularFireList<any>;
+  latestBlogsList: AngularFireList<any>;
   blogFamily:AngularFireList<any>;
   selectedBlog : BlogData;
   constructor(private firebase:AngularFireDatabase) {}
   
   getAllBlogs()
   {
-    this.blogsList = this.firebase.list('blogs/');
+    console.log(this.blogsList);
+    if( this.blogsList == null  || this.blogsList == undefined )
+    {
+      this.blogsList = this.firebase.list('blogs/');
+    }
     return this.blogsList;
   }
 
   getLatestBlogs()
   {
-    this.blogsList = this.firebase.list('blogs/',ref => ref.limitToLast(3));
-    return this.blogsList;
+    console.log(this.latestBlogsList);
+    if( this.latestBlogsList == null || this.latestBlogsList == undefined )
+    {
+      this.latestBlogsList = this.firebase.list('blogs/',ref => ref.limitToLast(3));
+    }
+    return this.latestBlogsList;
   }
 
   getBlogFamily()
   {
-    this.blogFamily = this.firebase.list('blogFamily/');
+    console.log(this.blogFamily);
+    if( this.blogFamily == null || this.blogFamily == undefined )
+    {
+      this.blogFamily = this.firebase.list('blogFamily/');
+    }
     return this.blogFamily;
   }
 
@@ -41,8 +54,9 @@ export class BlogsService {
   
   updateBlog(blogData : BlogData){
     let key = blogData.$key;
+    console.log(key);
     delete blogData.$key;
-    this.blogsList.update(key, {
+    this.firebase.object('blogs/'+key).update({
       type:blogData.type,
       title: blogData.title,
       subtitle: blogData.subtitle,
@@ -51,7 +65,10 @@ export class BlogsService {
       pic1: blogData.pic1,
       pic2: blogData.pic2,
       pic3: blogData.pic3,
-    })
+      pic4: blogData.pic4,
+      pic5: blogData.pic5,
+      pic6: blogData.pic6,
+    });
     this.selectedBlog = null;
   }
 

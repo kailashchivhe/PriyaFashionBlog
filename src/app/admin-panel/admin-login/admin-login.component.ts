@@ -20,14 +20,14 @@ export class AdminLoginComponent implements OnInit {
     let email='';
 
     this.adminLoginForm = new FormGroup({
-      'email': new FormControl(email,Validators.required),
+      'adminemail': new FormControl(email,Validators.required),
       'password': new FormControl(password,Validators.required)
     });
   }
 
   loginUser()
   {
-    this._auth.loginUser( this.adminLoginForm.get('email').value, this.adminLoginForm.get('password').value );
+    this._auth.loginUser( this.adminLoginForm.get('adminemail').value, this.adminLoginForm.get('password').value );
     this._router.navigate(['admin/panel'])
   }
 }

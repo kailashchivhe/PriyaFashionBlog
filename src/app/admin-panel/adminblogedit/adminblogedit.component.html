@@ -20,20 +20,32 @@
         </select><br/><br/>
         
         <label>Cover Photo *</label>
-        <button mdbBtn (click)="addCoverPic()" color="default" mdbWavesEffect>Select Cover Pic</button>
+        <button mdbBtn (click)="addPic(0)" [color]="coverPicButton" mdbWavesEffect>Select Cover Pic</button>
         <br/><br/>       
         
         <label>Pic 1 *</label>
-        <button mdbBtn (click)="addPic1()" color="default"  mdbWavesEffect>Select Pic 1</button>
+        <button mdbBtn (click)="addPic(1)" [color]="pic1Button"  mdbWavesEffect>Select Pic 1</button>
         <br/><br/> 
 
         <label>Pic 2 *</label>
-        <button mdbBtn (click)="addPic2()" color="default" mdbWavesEffect>Select Pic 2</button>
+        <button mdbBtn (click)="addPic(2)" [color]="pic2Button" mdbWavesEffect>Select Pic 2</button>
         <br/><br/> 
 
         <label>Pic 3 *</label>
-        <button mdbBtn (click)="addPic3()" color="default"  mdbWavesEffect>Select Pic 3</button>
+        <button mdbBtn (click)="addPic(3)" [color]="pic3Button"  mdbWavesEffect>Select Pic 3</button>
         <br/><br/> 
+
+        <label>Pic 4 *</label>
+        <button mdbBtn (click)="addPic(4)" [color]="pic4Button"  mdbWavesEffect>Select Pic 4</button>
+        <br/><br/> 
+
+        <label>Pic 5 *</label>
+        <button mdbBtn (click)="addPic(5)" [color]="pic5Button" mdbWavesEffect>Select Pic 5</button>
+        <br/><br/> 
+
+        <label>Pic 6 *</label>
+        <button mdbBtn (click)="addPic(6)" [color]="pic6Button"  mdbWavesEffect>Select Pic 6</button>
+        <br/><br/>
 
         <div class="md-form md-outline">
             <textarea type="text" id="description" formControlName="description" class="form-control md-textarea" rows="3" mdbInput></textarea>

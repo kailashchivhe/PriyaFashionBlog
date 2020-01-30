@@ -10,6 +10,7 @@ export class AppComponent {
   slides=[ '../assets/images/cover_photo_final.jpg','../assets/images/facebook1.jpg','../assets/images/facebook2.jpg']
 
   getHeaderFooterColor(){
-    return "#fbceb1";
+    // return "#fbceb1";
+    return "#fee6d8";
   }
 }
