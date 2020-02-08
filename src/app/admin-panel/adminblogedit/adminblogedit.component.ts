@@ -5,6 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BlogData } from 'src/app/model/BlogData';
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { ToastrService } from 'ngx-toastr';
+import { AngularFireStorage } from 'angularfire2/storage';
 
 @Component({
   selector: 'app-adminblogedit',
@@ -22,19 +23,13 @@ export class AdminblogeditComponent implements OnInit {
   pic4: String;
   pic5: String;
   pic6: String;
-  coverPicButton: String="primary";
-  pic1Button: String="primary";
-  pic2Button: String="primary";
-  pic3Button: String="primary";
-  pic4Button: String="primary";
-  pic5Button: String="primary";
-  pic6Button: String="primary";
 
   updateBlog:boolean = false;
 
   constructor(private route: ActivatedRoute,
     private firebaseService: BlogsService,
     private imageService:NgxImageCompressService,
+    private angularFireStorage:AngularFireStorage,
     private toastr: ToastrService,
     private router: Router) { }
 
@@ -194,49 +189,63 @@ export class AdminblogeditComponent implements OnInit {
     }
   }
 
-  addPic( type: number )
+  addPicToStorage( event:any, type: number )
   {
-    this.imageService.uploadFile().then(({image, orientation}) => {
-      this.imageService.compressFile(image, orientation, 70, 70).then(
-        result => {
-          switch (type) {
-            case 0:
-              this.coverPic = result;
-              this.coverPicButton = "success";
-              break;
-            case 1:
-              this.pic1 = result;
-              this.pic1Button = "success"
-              break;
-            case 2:
-              this.pic2 = result;
-              this.pic2Button = "success"
-              break;
-            case 3:
-              this.pic3 = result;
-              this.pic3Button = "success"
-              break;
-            case 4:
-              this.pic4 = result;
-              this.pic4Button = "success"
-              break;
-            case 5:
-              this.pic5 = result;
-              this.pic5Button = "success"
-              break;
-            case 6:
-              this.pic6 = result;
-              this.pic6Button = "success"
-              break;
-          }
-        }
-      );
+    if( event.target.files && event.target.files[0] ) {
+      let file = event.target.files[0];
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        let localUrl = event.target.result;
+        this.uploadPicToStorage( localUrl, file , type );
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  uploadPicToStorage( localUrl: string, file: File, type:number )
+  {
+      this.imageService.compressFile( localUrl, -1, 70, 70 ).then( async compressedImage=>{
+      // let result = await this.uploadFile( event.target.files.item(0), this.blogForm.get('title').value );
+      const imageBlob = this.dataURItoBlob(compressedImage.split(',')[1]);
+      let imageFile:File = new File( [imageBlob], file.name, { type: 'image/jpeg' } );
+      let firebaseStoragePath = `blogs/${this.blogForm.get('title').value}/${file.name}`;
+      let result = await this.uploadFile( imageFile, firebaseStoragePath );
+      switch (type) 
+      {
+        case 0:
+          this.coverPic = result.toString();
+          break;
+        case 1:
+          this.pic1 = result.toString();
+          break;
+        case 2:
+          this.pic2 = result.toString();
+          break;
+        case 3:
+          this.pic3 = result.toString();
+          break;
+        case 4:
+          this.pic4 = result.toString();
+          break;
+        case 5:
+          this.pic5 = result.toString();
+          break;
+        case 6:
+          this.pic6 = result.toString();
+          break;
+      }
     });
   }
 
-  getCoverButtonColor():string
-  {
-    return this.coverPicButton.toString();
+  dataURItoBlob(dataURI) {
+    const byteString = window.atob(dataURI);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+    int8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([int8Array], { type: 'image/jpeg' });
+    return blob;
   }
 
   initFormControls()
@@ -246,7 +255,6 @@ export class AdminblogeditComponent implements OnInit {
     let description;
     let type;
     let blogData:BlogData = this.firebaseService.getSelectedBlog();
-    console.log("Selected Blog ",blogData);
     if( blogData != undefined && blogData != null ){
       this.updateBlog = true;
       title = blogData.title;
@@ -262,4 +270,15 @@ export class AdminblogeditComponent implements OnInit {
     });
   }
   
+  uploadFile( file:File, firebaseStoragePath:string )
+  {
+    return new Promise((resolve,reject)=>{
+      this.angularFireStorage.upload( firebaseStoragePath, file).then(rst => {
+        rst.ref.getDownloadURL().then(url => {
+            resolve(url);
+        });
+      });
+    });
+  }      
+
 }

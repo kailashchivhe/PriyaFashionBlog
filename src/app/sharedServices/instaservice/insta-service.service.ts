@@ -31,7 +31,6 @@ export class InstaServiceService {
         i++;
       }
     }
-    console.log(graphql);
     return graphql;
   }
 }

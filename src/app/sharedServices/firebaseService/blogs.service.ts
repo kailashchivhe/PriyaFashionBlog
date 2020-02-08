@@ -14,7 +14,6 @@ export class BlogsService {
   
   getAllBlogs()
   {
-    console.log(this.blogsList);
     if( this.blogsList == null  || this.blogsList == undefined )
     {
       this.blogsList = this.firebase.list('blogs/');
@@ -24,7 +23,6 @@ export class BlogsService {
 
   getLatestBlogs()
   {
-    console.log(this.latestBlogsList);
     if( this.latestBlogsList == null || this.latestBlogsList == undefined )
     {
       this.latestBlogsList = this.firebase.list('blogs/',ref => ref.limitToLast(3));
@@ -34,7 +32,6 @@ export class BlogsService {
 
   getBlogFamily()
   {
-    console.log(this.blogFamily);
     if( this.blogFamily == null || this.blogFamily == undefined )
     {
       this.blogFamily = this.firebase.list('blogFamily/');
@@ -54,7 +51,6 @@ export class BlogsService {
   
   updateBlog(blogData : BlogData){
     let key = blogData.$key;
-    console.log(key);
     delete blogData.$key;
     this.firebase.object('blogs/'+key).update({
       type:blogData.type,
