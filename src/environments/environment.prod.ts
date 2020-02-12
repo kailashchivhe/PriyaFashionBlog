@@ -1,13 +1,13 @@
 export const environment = {
   production: true,
   firebaseConfig :{
-    apiKey: "AIzaSyBH_VLS3ST76sgMOuy1Dh2rVTt2kTMAcCY",
-    authDomain: "priya-haridas-kotnis-blog.firebaseapp.com",
-    databaseURL: "https://priya-haridas-kotnis-blog.firebaseio.com",
-    projectId: "priya-haridas-kotnis-blog",
-    storageBucket: "priya-haridas-kotnis-blog.appspot.com",
-    messagingSenderId: "265948381750",
-    appId: "1:265948381750:web:2b12b3bac4015246398e97",
-    measurementId: "G-T380J655BQ"
+    apiKey: "AIzaSyDSAPGTkJ0_Wtfop1fcSH1UYN_9Bzk_yLU",
+    authDomain: "priya-haridas-kotnis-5267e.firebaseapp.com",
+    databaseURL: "https://priya-haridas-kotnis-5267e.firebaseio.com",
+    projectId: "priya-haridas-kotnis-5267e",
+    storageBucket: "priya-haridas-kotnis-5267e.appspot.com",
+    messagingSenderId: "1068770546025",
+    appId: "1:1068770546025:web:ccca7625f4deb488936df8",
+    measurementId: "G-HTYH73DED6"
   }
 };

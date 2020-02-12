@@ -49,7 +49,7 @@
           <div class="main-content">
             <div class="post-content-body">
               <h2 class="font-weight-bold mb-3">{{post.subtitle}}</h2>
-              <p>{{post.description}}</p>
+              <p style="text-align:justify">{{post.description}}</p>
               <div class="row">
                 <div class="column" *ngFor="let pic of row1;let i=index">
                   <img [src]="pic" (click)="picClicked(i,1)" style="width:100%">
