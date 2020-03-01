@@ -36,6 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShortDescriptionPipe } from './pipes/short-description.pipe';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { AdminLoginComponent } from './admin-panel/admin-login/admin-login.component';
+import { UploadHeaderImagesComponent } from './admin-panel/upload-header-images/upload-header-images.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { AdminLoginComponent } from './admin-panel/admin-login/admin-login.compo
     CategoriesComponent,
     FamDetailsComponent,
     ShortDescriptionPipe,
-    AdminLoginComponent
+    AdminLoginComponent,
+    UploadHeaderImagesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

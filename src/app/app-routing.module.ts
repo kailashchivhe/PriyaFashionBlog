@@ -14,6 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FamDetailsComponent } from './admin-panel/fam-details/fam-details.component';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { AdminLoginComponent } from './admin-panel/admin-login/admin-login.component';
+import { UploadHeaderImagesComponent } from './admin-panel/upload-header-images/upload-header-images.component';
 
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
     { path: '', component: AdminblogstartComponent },
     { path: 'new', component: AdminblogeditComponent },
     { path: 'famdetails', component: FamDetailsComponent },
+    { path: 'updateslide', component: UploadHeaderImagesComponent },
     { path: '**', component: PageNotFoundComponent }
     ] 
   },

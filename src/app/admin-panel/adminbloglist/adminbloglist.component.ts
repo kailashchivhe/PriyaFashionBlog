@@ -49,6 +49,10 @@ export class AdminbloglistComponent implements OnInit {
     this.firebaseService.deleteBlog(post.$key);
   }
 
+  uploadHeaderImages(){
+    this.router.navigate(['updateslide'], {relativeTo: this.route});
+  }
+
   logout()
   {
     this._authService.logoutUser();
