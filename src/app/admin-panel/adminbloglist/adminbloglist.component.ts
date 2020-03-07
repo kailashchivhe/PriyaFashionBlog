@@ -2,38 +2,30 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BlogData } from 'src/app/model/BlogData';
+import { FirebaseCallback } from 'src/app/model/firebaseCallback';
 import { AuthService } from 'src/app/sharedServices/authService/auth.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-adminbloglist',
   templateUrl: './adminbloglist.component.html',
   styleUrls: ['./adminbloglist.component.scss']
 })
-export class AdminbloglistComponent implements OnInit,OnDestroy {
+export class AdminbloglistComponent implements OnInit,FirebaseCallback {
   latestPosts: BlogData[];
   bShowloader:boolean = true;
-  subscribe:Subscription;
   
   constructor(private firebaseService: BlogsService,
     private router: Router,private _authService:AuthService,
     private route: ActivatedRoute) { }
 
-  ngOnInit() {
-    var data = this.firebaseService.getAllBlogs();
-    this.subscribe = data.snapshotChanges().subscribe(item => {
-      this.latestPosts = [];
-      item.forEach(element => {
-        var y = element.payload.toJSON();
-        y["$key"] = element.key;
-        this.latestPosts.push(y as BlogData);
-      })
+  onDataReceived(blogList: BlogData[]) {
       this.bShowloader = false;
-    });
+      this.latestPosts = blogList;
   }
-  
-  ngOnDestroy(): void {
-    this.subscribe.unsubscribe();
+
+  ngOnInit() {
+    this.bShowloader = true;
+    this.firebaseService.getBlogsData( this );
   }
 
   onNewProject() 
@@ -59,6 +51,4 @@ export class AdminbloglistComponent implements OnInit,OnDestroy {
   {
     this._authService.logoutUser();
   }
-
-
 }

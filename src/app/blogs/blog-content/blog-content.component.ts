@@ -4,16 +4,17 @@ import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.servi
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { FirebaseCallback } from 'src/app/model/firebaseCallback';
 
 @Component({
   selector: 'app-blog-content',
   templateUrl: './blog-content.component.html',
   styleUrls: ['./blog-content.component.scss']
 })
-export class BlogContentComponent implements OnInit,OnDestroy {
+export class BlogContentComponent implements OnInit,FirebaseCallback{
   post:BlogData;
   bShowloader: boolean = true;
-  subscribe:Subscription;
+  key: string;
   row1=[];
   row2=[];
 
@@ -21,25 +22,25 @@ export class BlogContentComponent implements OnInit,OnDestroy {
     private toastr: ToastrService,
     private router:Router,private activatedRouter:ActivatedRoute) { }
 
+  onDataReceived(blogList: BlogData[]) {
+    for( var blog of blogList )
+    {
+        if( blog.$key == this.key )
+        {
+          this.bShowloader = false;
+          this.post = blog;
+          this.pushRowData();
+          break;
+        }
+    }
+  }
+
   ngOnInit() {
     this.activatedRouter.paramMap.subscribe(params => {
-        let key = params.get('key');
-        if( key )
+        this.key = params.get('key');
+        if( this.key )
         {
-          var data = this.blogService.getAllBlogs();
-          this.subscribe = data.snapshotChanges().subscribe(item => {
-            item.forEach(element => {
-              var y = element.payload.toJSON();
-              y["$key"] = element.key;
-              let data = y as BlogData;
-              if( data.$key === key )
-              {
-                this.post = data;
-                this.pushRowData();
-              }
-            })
-            this.bShowloader=false;
-          });
+          this.blogService.getBlogsData(this);
         }
         else
         {
@@ -47,10 +48,6 @@ export class BlogContentComponent implements OnInit,OnDestroy {
           this.router.navigateByUrl("error");
         }    
     });
-  }
-
-  ngOnDestroy(){
-    this.subscribe.unsubscribe();
   }
   
   setModalImage( imageSrc: string )

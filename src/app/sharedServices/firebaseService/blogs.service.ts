@@ -1,35 +1,43 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { BlogData } from '../../model/BlogData';
+import { FirebaseCallback } from 'src/app/model/firebaseCallback';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BlogsService {
   blogsList: AngularFireList<any>;
-  latestBlogsList: AngularFireList<any>;
   blogFamily:AngularFireList<any>;
   selectedBlog : BlogData;
+  allBlogsData: BlogData[];
   constructor(private firebase:AngularFireDatabase) {}
   
-  getAllBlogs()
+  getAllBlogsFromServer()
   {
-    if( this.blogsList == null  || this.blogsList == undefined )
-    {
-      console.log("Server data getAllBlogs");
-      this.blogsList = this.firebase.list('blogs/');
-    }
+    this.blogsList = this.firebase.list('blogs/');
     return this.blogsList;
   }
 
-  getLatestBlogs()
+  getBlogsData( firebaseCallback : FirebaseCallback )
   {
-    if( this.latestBlogsList == null || this.latestBlogsList == undefined )
+    if( this.allBlogsData == null || this.allBlogsData.length == 0 )
     {
-      console.log("Server data getLatestBlogs");
-      this.latestBlogsList = this.firebase.list('blogs/',ref => ref.limitToLast(3));
+      var data = this.getAllBlogsFromServer();
+      data.snapshotChanges().subscribe(item => {
+        this.allBlogsData = [];
+        item.forEach(element => {
+          var y = element.payload.toJSON();
+          y["$key"] = element.key;
+          this.allBlogsData.push(y as BlogData);
+        })
+        firebaseCallback.onDataReceived(this.allBlogsData);
+      });
     }
-    return this.latestBlogsList;
+    else
+    {
+      firebaseCallback.onDataReceived( this.allBlogsData );
+    }
   }
 
   getBlogFamily()
