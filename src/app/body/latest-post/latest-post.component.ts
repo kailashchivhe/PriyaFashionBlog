@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
 import { BlogData } from 'src/app/model/BlogData';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-latest-post',
@@ -11,13 +12,17 @@ import { Router } from '@angular/router';
 export class LatestPostComponent implements OnInit {
 
   latestPosts:BlogData[];
-  constructor(private blogService:BlogsService,private router:Router) { }
   public bShowloader = true;
+  subscribe:Subscription;
 
+  constructor(private blogService:BlogsService,private router:Router) { 
+    
+  }
+  
   ngOnInit() {
     var data = this.blogService.getLatestBlogs();
     let cnt = 0;
-    data.snapshotChanges().subscribe(item => {
+    this.subscribe=data.snapshotChanges().subscribe(item => {
       let posts = [];
       item.forEach(element => {
         var y = element.payload.toJSON();
@@ -27,6 +32,10 @@ export class LatestPostComponent implements OnInit {
       this.latestPosts = posts.reverse();
       this.bShowloader=false;
     })
+  }
+
+  ngOnDestroy(): void {
+    this.subscribe.unsubscribe();
   }
 
   onItemClick(blog : BlogData){

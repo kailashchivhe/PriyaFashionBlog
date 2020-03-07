@@ -36,6 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShortDescriptionPipe } from './pipes/short-description.pipe';
 import { AuthGuardService } from './guards/auth-guard.service';
 import { AdminLoginComponent } from './admin-panel/admin-login/admin-login.component';
+import { BlogsService } from './sharedServices/firebaseService/blogs.service';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,7 @@ import { AdminLoginComponent } from './admin-panel/admin-login/admin-login.compo
       progressAnimation: 'increasing'
       })
   ],
-  providers: [NgxImageCompressService,AuthGuardService],
+  providers: [NgxImageCompressService,AuthGuardService,BlogsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

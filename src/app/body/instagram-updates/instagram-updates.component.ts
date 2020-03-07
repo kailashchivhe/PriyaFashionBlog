@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InstaServiceService } from 'src/app/sharedServices/instaservice/insta-service.service';
-import { filter } from 'rxjs/operators';
-import { IData } from 'src/app/model/IData';
+import { InstaServiceService } from 'src/app/sharedServices/instaservice/insta.service';
 import { IEdges } from 'src/app/model/IEdges';
 
 @Component({

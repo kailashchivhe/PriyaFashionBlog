@@ -1,17 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { BlogData } from 'src/app/model/BlogData';
 import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-blog-content',
   templateUrl: './blog-content.component.html',
   styleUrls: ['./blog-content.component.scss']
 })
-export class BlogContentComponent implements OnInit {
+export class BlogContentComponent implements OnInit,OnDestroy {
   post:BlogData;
   bShowloader: boolean = true;
+  subscribe:Subscription;
   row1=[];
   row2=[];
 
@@ -25,7 +27,7 @@ export class BlogContentComponent implements OnInit {
         if( key )
         {
           var data = this.blogService.getAllBlogs();
-          data.snapshotChanges().subscribe(item => {
+          this.subscribe = data.snapshotChanges().subscribe(item => {
             item.forEach(element => {
               var y = element.payload.toJSON();
               y["$key"] = element.key;
@@ -47,6 +49,10 @@ export class BlogContentComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(){
+    this.subscribe.unsubscribe();
+  }
+  
   setModalImage( imageSrc: string )
   {
     document.getElementById('myModal').style.display = 'block';
@@ -102,10 +108,6 @@ export class BlogContentComponent implements OnInit {
   spanClicked()
   {
     document.getElementById('myModal').style.display = 'none';
-  }
-
-  ngOnDestroy(){
-
   }
   
   getUrl()

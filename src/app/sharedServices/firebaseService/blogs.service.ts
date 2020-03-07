@@ -16,6 +16,7 @@ export class BlogsService {
   {
     if( this.blogsList == null  || this.blogsList == undefined )
     {
+      console.log("Server data getAllBlogs");
       this.blogsList = this.firebase.list('blogs/');
     }
     return this.blogsList;
@@ -25,6 +26,7 @@ export class BlogsService {
   {
     if( this.latestBlogsList == null || this.latestBlogsList == undefined )
     {
+      console.log("Server data getLatestBlogs");
       this.latestBlogsList = this.firebase.list('blogs/',ref => ref.limitToLast(3));
     }
     return this.latestBlogsList;
@@ -34,6 +36,7 @@ export class BlogsService {
   {
     if( this.blogFamily == null || this.blogFamily == undefined )
     {
+      console.log("Server data getBlogFamily");
       this.blogFamily = this.firebase.list('blogFamily/');
     }
     return this.blogFamily;

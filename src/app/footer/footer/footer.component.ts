@@ -11,10 +11,10 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FooterComponent implements OnInit {
   familyBlogForm: FormGroup;
+  
   constructor(private firebaseService:BlogsService,private toastr: ToastrService) {}
 
   ngOnInit() {
-    this.firebaseService.getBlogFamily();
     this.initFormControls();
   }
 

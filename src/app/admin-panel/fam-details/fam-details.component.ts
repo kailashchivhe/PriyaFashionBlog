@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogFamily } from 'src/app/model/BlogFamily';
 import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-fam-details',
@@ -10,11 +11,13 @@ import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.servi
 export class FamDetailsComponent implements OnInit {
   famDetailsList:BlogFamily[];
   bShowloader: boolean = true;
-  constructor(private firebaseService:BlogsService) { }
+  subscribe:Subscription;
 
+  constructor(private firebaseService:BlogsService) { }
+  
   ngOnInit() {
     var data = this.firebaseService.getBlogFamily();
-    data.snapshotChanges().subscribe(item => {
+    this.subscribe=data.snapshotChanges().subscribe(item => {
       this.famDetailsList = [];
       item.forEach(element => {
         var y = element.payload.toJSON();
@@ -25,4 +28,8 @@ export class FamDetailsComponent implements OnInit {
     })
   }
 
+  ngOnDestroy(): void {
+    this.subscribe.unsubscribe();
+  }
+  
 }
