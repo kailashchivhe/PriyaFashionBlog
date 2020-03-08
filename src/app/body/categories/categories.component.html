@@ -1,7 +1,7 @@
 <div class="row align-items-stretch retro-layout">
     
     <div class="col-md-5">
-          <a (click)="onClick('blogs/fashion')" class="hentry img-1 h-100 gradient" style="background-image: url('../assets/images_data/fashion/home_fashion.JPG');">
+          <a [routerLink]="['blogs/fashion']" class="hentry img-1 h-100 gradient" style="background-image: url('../assets/images_data/fashion/home_fashion.JPG');">
             <span class="post-category text-white bg-danger">Fashion</span>
             <div class="text">
               <span>View All</span>
@@ -10,20 +10,20 @@
     </div>
     
     <div class="col-md-7">
-        <a (click)="onClick('blogs/beauty')" class="hentry img-2 v-height mb30 gradient" style="background-image: url('../assets/images_data/beauty/home_beauty.jpg');">
+        <a [routerLink]="['blogs/beauty']"class="hentry img-2 v-height mb30 gradient" style="background-image: url('../assets/images_data/beauty/home_beauty.jpg');">
             <span class="post-category text-white bg-success">Beauty</span>
             <div class="text text-sm">
                 <span>View All</span>
             </div>
         </a>
         <div class="two-col d-block d-md-flex">
-            <a (click)="onClick('blogs/travel')" class="hentry v-height img-2 gradient" style="background-image: url('../assets/images_data/travel/home_travel.jpg');">
+            <a [routerLink]="['blogs/travel']" class="hentry v-height img-2 gradient" style="background-image: url('../assets/images_data/travel/home_travel.jpg');">
             <span class="post-category text-white bg-primary">Travel</span>
             <div class="text text-sm">
                 <span>View All</span>
             </div>
             </a>
-            <a (click)="onClick('blogs/food')" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('../assets/images_data/food/home_food.jpg');">
+            <a [routerLink]="['blogs/food']" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('../assets/images_data/food/home_food.jpg');">
                 <span class="post-category text-white bg-warning">Food</span>
                 <div class="text text-sm">
                     <span>View All</span>

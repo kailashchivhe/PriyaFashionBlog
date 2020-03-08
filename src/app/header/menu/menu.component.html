@@ -1,25 +1,25 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-light" [containerInside]="false">
     <mdb-navbar-brand>
-        <a class="nav-link" (click)="onClick('')">
+        <a class="nav-link" [routerLink]="['']" >
             <img src="../../../assets/images_data/blogger.png"/>
         </a>
     </mdb-navbar-brand>
     <links>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link waves-light" mdbWavesEffect (click)="onClick('')">Home</a>
+              <a class="nav-link waves-light" [routerLink]="['']" mdbWavesEffect>Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link waves-light" mdbWavesEffect (click)="onClick('blogs/fashion')">Fashion</a>
+              <a class="nav-link waves-light" [routerLink]="['blogs/fashion']" mdbWavesEffect>Fashion</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link waves-light" mdbWavesEffect (click)="onClick('blogs/beauty')">Beauty</a>
+                <a class="nav-link waves-light" [routerLink]="['blogs/beauty']" mdbWavesEffect>Beauty</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link waves-light" mdbWavesEffect (click)="onClick('blogs/food')">Food</a>
+                <a class="nav-link waves-light" [routerLink]="['blogs/food']" mdbWavesEffect>Food</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link waves-light" mdbWavesEffect (click)="onClick('blogs/travel')">Travel</a>
+                <a class="nav-link waves-light" [routerLink]="['blogs/travel']" mdbWavesEffect>Travel</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto nav-flex-icons">

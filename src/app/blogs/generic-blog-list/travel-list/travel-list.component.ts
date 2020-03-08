@@ -12,13 +12,14 @@ import { FirebaseCallback } from 'src/app/model/firebaseCallback';
 })
 export class TravelListComponent implements OnInit,FirebaseCallback{
   categoryName:string = "TRAVEL";
-  latestPosts:BlogData[] = [];
+  latestPosts:BlogData[];
   bShowloader:boolean=true;
   
   constructor(private blogService:BlogsService,private router:Router) { 
   }
 
   onDataReceived(blogList: BlogData[]) {
+    this.latestPosts = [];
     for( var blog of blogList )
     {
       if( blog.type === "travel" )

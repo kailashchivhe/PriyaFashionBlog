@@ -11,7 +11,7 @@ import { FirebaseCallback } from 'src/app/model/firebaseCallback';
   styleUrls: ['./latest-post.component.scss']
 })
 export class LatestPostComponent implements OnInit,FirebaseCallback {
-  latestPosts:BlogData[] = [];
+  latestPosts:BlogData[];
   public bShowloader = true;
   subscribe:Subscription;
 
@@ -19,6 +19,7 @@ export class LatestPostComponent implements OnInit,FirebaseCallback {
   
   onDataReceived(blogList: BlogData[]) {
     var reverseList = blogList.reverse();
+    this.latestPosts = [];
     var i = 0;
     for( var blog of reverseList )
     {
