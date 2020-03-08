@@ -8,7 +8,6 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'FashionBlog';
-  slides=[ '../assets/images/cover_photo_final.jpg','../assets/images/facebook1.jpg','../assets/images/facebook2.jpg']
 
   constructor(private router:Router){}
   

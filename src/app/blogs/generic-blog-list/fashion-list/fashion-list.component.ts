@@ -3,18 +3,21 @@ import { BlogData } from 'src/app/model/BlogData';
 import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
 import { Router } from '@angular/router';
 import { FirebaseCallback } from 'src/app/model/firebaseCallback';
+import { HeaderImageCallback } from 'src/app/model/HeaderImageCallback';
+import { HeaderImagesUploadService } from 'src/app/sharedServices/firebaseService/header-images-upload.service';
 
 @Component({
   selector: 'app-fashion-list',
   templateUrl: '../generic-blog-list.html',
   styleUrls: ['../generic-blog-list.scss']
 })
-export class FashionListComponent implements OnInit,FirebaseCallback{
+export class FashionListComponent implements OnInit,FirebaseCallback,HeaderImageCallback{
   categoryName:string = "FASHION";
   latestPosts:BlogData[];
   bShowloader:boolean=true;
+  headerImage: string;
   
-  constructor(private blogService:BlogsService,private router:Router) {
+  constructor(private blogService:BlogsService,private router:Router,private headerImageService:HeaderImagesUploadService) {
   }
 
   onDataReceived(blogList: BlogData[]) {
@@ -28,8 +31,9 @@ export class FashionListComponent implements OnInit,FirebaseCallback{
     }
     this.bShowloader = false;
   }
-
+  
   ngOnInit() {
+    this.headerImageService.getContentHeaderImage( 1,this );
     this.blogService.getBlogsData( this );
   }
   
@@ -39,6 +43,12 @@ export class FashionListComponent implements OnInit,FirebaseCallback{
 
   getUrl()
   {
-    return "url('../../../../assets/images_data/fashion/fashion_cover_pic.jpeg')";
+    return `url(${this.headerImage})`;
+  }
+
+  allImagesReceived(images: string[]) {}
+
+  contentSpecificHeader(image: string) {
+    this.headerImage = image;
   }
 }

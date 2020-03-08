@@ -1,0 +1,42 @@
+<h2 class="font-weight-bold mb-3">Update Header Images</h2>
+<div class="custom-control custom-radio">
+    <input type="radio" class="custom-control-input" id="slidingPic1" (click) = "onClicked($event.target.value)" name="picUpload" value="slidingPic1"mdbInput>
+    <label class="custom-control-label font-weight-bold mb-3" for="slidingPic1">Upload Sliding Pic 1</label>
+</div>
+<div class="custom-control custom-radio">
+    <input type="radio" class="custom-control-input" id="slidingPic2" (click) = "onClicked($event.target.value)" name="picUpload" value="slidingPic2" mdbInput>
+    <label class="custom-control-label font-weight-bold mb-3" for="slidingPic2">Upload Sliding Pic 2</label>
+</div>
+<div class="custom-control custom-radio">
+    <input type="radio" class="custom-control-input" id="slidingPic3" (click) = "onClicked($event.target.value)" name="picUpload" value="slidingPic3"mdbInput>
+    <label class="custom-control-label font-weight-bold mb-3" for="slidingPic3">Upload Sliding Pic 3</label>
+</div>
+<div class="custom-control custom-radio">
+    <input type="radio" class="custom-control-input" id="slidingPic4" (click) = "onClicked($event.target.value)" name="picUpload" value="slidingPic4" mdbInput>
+    <label class="custom-control-label font-weight-bold mb-3" for="slidingPic4">Upload Sliding Pic 4</label>
+</div>
+<hr>
+<div class="custom-control custom-radio">
+    <input type="radio" class="custom-control-input" id="fashionPic" (click) = "onClicked($event.target.value)" name="picUpload" value="fashionPic" mdbInput>
+    <label class="custom-control-label font-weight-bold mb-3" for="fashionPic">Upload Fashion Header Pic </label>
+</div>
+<div class="custom-control custom-radio">
+    <input type="radio" class="custom-control-input" id="foodPic" (click) = "onClicked($event.target.value)" name="picUpload" value="foodPic" mdbInput>
+    <label class="custom-control-label font-weight-bold mb-3" for="foodPic">Upload Food Header Pic </label>
+</div>
+<div class="custom-control custom-radio">
+    <input type="radio" class="custom-control-input" id="beautyPic" (click) = "onClicked($event.target.value)" name="picUpload" value="beautyPic" mdbInput>
+    <label class="custom-control-label font-weight-bold mb-3" for="beautyPic">Upload Beauty Header Pic </label>
+</div>
+<div class="custom-control custom-radio">
+    <input type="radio" class="custom-control-input" id="travelPic" (click) = "onClicked($event.target.value)" name="picUpload" value="travelPic" mdbInput>
+    <label class="custom-control-label font-weight-bold mb-3" for="travelPic">Upload Travel Header Pic</label>
+</div>
+<hr>
+<div *ngIf="isUploadInputVisible()">
+<input mdbInput type="file" class="form-control"  (change)="addPicToStorage($event)">
+</div>
+<br/>
+<div class="col-xs-12">
+    <button mdbBtn color="primary" [disabled]="isUploadButtonDisabled()" (click)="uploadHeaderImages()">Update Image</button>
+</div>
