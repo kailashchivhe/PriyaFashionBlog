@@ -15,7 +15,7 @@ export class FashionListComponent implements OnInit,FirebaseCallback,HeaderImage
   categoryName:string = "FASHION";
   latestPosts:BlogData[];
   bShowloader:boolean=true;
-  headerImage: string;
+  headerImage: string = "../../../assets/images_data/pattern.png";
   
   constructor(private blogService:BlogsService,private router:Router,private headerImageService:HeaderImagesUploadService) {
   }

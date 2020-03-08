@@ -32,7 +32,7 @@ export class HeaderImagesUploadService {
     }
     else
     {
-      return this.slidingImageURLs;
+      headerImageCallback.allImagesReceived(this.slidingImageURLs);
     }
   }
 
