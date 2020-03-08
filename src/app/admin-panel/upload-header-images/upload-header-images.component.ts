@@ -109,7 +109,7 @@ export class UploadHeaderImagesComponent implements OnInit {
           firebaseStoragePath = `blogsHeaderPics/slidingPics/travelPic`;
           break;
     }
-    this.imageService.compressFile( localUrl, -1, 70, 70 ).then( async compressedImage=>{
+    this.imageService.compressFile( localUrl, -1, 90, 90 ).then( async compressedImage=>{
       const imageBlob = this.dataURItoBlob(compressedImage.split(',')[1]);
       let imageFile:File = new File( [imageBlob], file.name, { type: 'image/jpeg' } );
       let result = await this.uploadFile( imageFile, firebaseStoragePath );

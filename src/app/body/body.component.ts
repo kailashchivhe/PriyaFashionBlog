@@ -1,20 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-import { BlogsService } from '../sharedServices/firebaseService/blogs.service';
+import { HeaderImagesUploadService } from '../sharedServices/firebaseService/header-images-upload.service';
+import { HeaderImageCallback } from '../model/HeaderImageCallback';
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.scss']
 })
-export class BodyComponent implements OnInit {
-  public slides=[ '../assets/images_data/caraousel/cover_pic_1.jpg',
-  '../assets/images_data/caraousel/cover_pic_3.jpg',
-  '../assets/images_data/caraousel/cover_pic_4.jpg',
-  '../assets/images_data/caraousel/cover_pic_5.jpg']
-  
-  constructor( private blogsService:BlogsService) { }
+export class BodyComponent implements OnInit,HeaderImageCallback {
+  public slides:string[];
+
+  constructor( private headerImageService:HeaderImagesUploadService) { }
 
   ngOnInit() {
-    
+    this.headerImageService.getSlidingImages( this );
   }
+
+  allImagesReceived(images: string[]) {
+    this.slides = [];
+    for( var image of images )
+    {
+      this.slides.push(image);
+    }
+  }
+
+  contentSpecificHeader(image: string) {}
 }

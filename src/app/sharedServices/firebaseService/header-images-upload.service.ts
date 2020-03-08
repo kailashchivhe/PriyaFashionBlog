@@ -1,38 +1,110 @@
 import { Injectable } from '@angular/core';
 import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
+import { HeaderImageCallback } from 'src/app/model/HeaderImageCallback';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeaderImagesUploadService {
-  slidingImages: AngularFireList<any>;
-  blogTypeHeaderImage: AngularFireList<any>;
+  private slidingImages: AngularFireList<any>;
+  private blogTypeHeaderImage: AngularFireList<any>;
+  private slidingImageURLs:string[];
+  private fashionHeaderImageURL:string;
+  private foodHeaderImageURL:string;
+  private beautyHeaderImageURL:string;
+  private travelHeaderImageURL:string;
+
   constructor(private firebase:AngularFireDatabase) { }
 
-  getSlidingImages()
+  getSlidingImages( headerImageCallback: HeaderImageCallback )
   {
-    this.slidingImages = this.firebase.list('blogsHeaderPics/slidingPics/');
-    return this.slidingImages;
+    if( this.slidingImageURLs == null || this.slidingImageURLs.length <= 0 )
+    {
+      this.slidingImages = this.firebase.list('blogsHeaderPics/slidingPics/');
+      this.slidingImages.snapshotChanges().subscribe(item => {
+        this.slidingImageURLs = [];
+        item.forEach(element => {
+          var y = element.payload.toJSON();
+          this.slidingImageURLs.push(y as string);
+        })
+        headerImageCallback.allImagesReceived(this.slidingImageURLs);
+      });
+    }
+    else
+    {
+      return this.slidingImageURLs;
+    }
   }
 
-  getFashionHeaderImage(type:number)
+  getContentHeaderImage(type:number, headerImageCallback:HeaderImageCallback)
   {
     switch(type)
     {
       case 1:
-      this.blogTypeHeaderImage = this.firebase.list('blogsHeaderPics/fashionPic/')
-      break;
+      {
+        this.blogTypeHeaderImage = this.firebase.list('blogsHeaderPics/fashionPic/')
+        if( this.fashionHeaderImageURL == null || this.fashionHeaderImageURL.length <= 0 )
+        {
+          this.setDataAndCallback( this.blogTypeHeaderImage, this.fashionHeaderImageURL, headerImageCallback );
+        }
+        else
+        {
+          headerImageCallback.contentSpecificHeader(this.fashionHeaderImageURL);
+        }
+        break;
+      }
       case 2:
-      this.blogTypeHeaderImage = this.firebase.list('blogsHeaderPics/foodPic/')
-      break;
+      {
+        this.blogTypeHeaderImage = this.firebase.list('blogsHeaderPics/foodPic/')
+        if( this.foodHeaderImageURL == null || this.foodHeaderImageURL.length <= 0 )
+        {
+          this.setDataAndCallback( this.blogTypeHeaderImage, this.foodHeaderImageURL, headerImageCallback );
+        }
+        else
+        {
+          headerImageCallback.contentSpecificHeader(this.foodHeaderImageURL);
+        }
+        break;
+      }
       case 3:
-      this.blogTypeHeaderImage = this.firebase.list('blogsHeaderPics/beautyPic/')
-      break;
+      {
+        this.blogTypeHeaderImage = this.firebase.list('blogsHeaderPics/beautyPic/')
+        if( this.beautyHeaderImageURL == null || this.beautyHeaderImageURL.length <= 0 )
+        {
+          this.setDataAndCallback( this.blogTypeHeaderImage, this.beautyHeaderImageURL, headerImageCallback );
+        }
+        else
+        {
+          headerImageCallback.contentSpecificHeader(this.beautyHeaderImageURL);
+        }
+        break;
+      }
       case 4:
-      this.blogTypeHeaderImage = this.firebase.list('blogsHeaderPics/travelPic/')
-      break;
+      {
+        this.blogTypeHeaderImage = this.firebase.list('blogsHeaderPics/travelPic/')
+        if( this.travelHeaderImageURL == null || this.travelHeaderImageURL.length <= 0 )
+        {
+          this.setDataAndCallback( this.blogTypeHeaderImage, this.travelHeaderImageURL, headerImageCallback );
+        }
+        else
+        {
+          headerImageCallback.contentSpecificHeader(this.travelHeaderImageURL);
+        }
+        break;
+      }
     }
-    return this.blogTypeHeaderImage;
+  }
+
+  private setDataAndCallback( blogTypeSubscriber: AngularFireList<any>, imageURL: string, headerImageCallback: HeaderImageCallback )
+  {
+    this.blogTypeHeaderImage.snapshotChanges().subscribe(item => {
+      this.slidingImageURLs = [];
+      item.forEach(element => {
+        var y = element.payload.toJSON();
+        imageURL = y as string;
+      })
+      headerImageCallback.contentSpecificHeader(imageURL);
+    });
   }
 
   updatePic(url : String,type:number){
