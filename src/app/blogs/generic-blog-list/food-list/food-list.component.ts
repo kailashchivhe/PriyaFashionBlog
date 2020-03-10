@@ -20,7 +20,7 @@ export class FoodListComponent implements OnInit,FirebaseCallback,HeaderImageCal
   constructor(private blogService:BlogsService,private router:Router,private headerImageService:HeaderImagesUploadService) {
   }
 
-  onDataReceived(blogList: BlogData[]) {
+  onDataReceived(blogList: BlogData[],bServerData:boolean) {
     this.latestPosts = [];
     for( var blog of blogList )
     {

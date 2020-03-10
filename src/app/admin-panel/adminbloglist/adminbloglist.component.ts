@@ -18,9 +18,16 @@ export class AdminbloglistComponent implements OnInit,FirebaseCallback {
     private router: Router,private _authService:AuthService,
     private route: ActivatedRoute) { }
 
-  onDataReceived(blogList: BlogData[]) {
+  onDataReceived(blogList: BlogData[],bServerData:boolean) {
       this.bShowloader = false;
-      this.latestPosts = blogList;
+      if( bServerData )
+      { 
+       this.latestPosts = blogList.reverse();
+      }
+      else
+      {
+        this.latestPosts = blogList;
+      }
   }
 
   ngOnInit() {

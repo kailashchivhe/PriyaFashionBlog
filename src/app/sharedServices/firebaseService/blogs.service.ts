@@ -31,12 +31,12 @@ export class BlogsService {
           y["$key"] = element.key;
           this.allBlogsData.push(y as BlogData);
         })
-        firebaseCallback.onDataReceived(this.allBlogsData);
+        firebaseCallback.onDataReceived(this.allBlogsData, true);
       });
     }
     else
     {
-      firebaseCallback.onDataReceived( this.allBlogsData );
+      firebaseCallback.onDataReceived( this.allBlogsData, false);
     }
   }
 

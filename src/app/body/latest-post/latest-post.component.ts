@@ -17,8 +17,12 @@ export class LatestPostComponent implements OnInit,FirebaseCallback {
 
   constructor(private blogService:BlogsService,private router:Router) {}
   
-  onDataReceived(blogList: BlogData[]) {
-    var reverseList = blogList.reverse();
+  onDataReceived(blogList: BlogData[], bServerData:boolean ) {
+    var reverseList = blogList;
+    if( bServerData )
+    { 
+      var reverseList = blogList.reverse();
+    }
     this.latestPosts = [];
     var i = 0;
     for( var blog of reverseList )

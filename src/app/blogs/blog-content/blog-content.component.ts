@@ -22,7 +22,7 @@ export class BlogContentComponent implements OnInit,FirebaseCallback{
     private toastr: ToastrService,
     private router:Router,private activatedRouter:ActivatedRoute) { }
 
-  onDataReceived(blogList: BlogData[]) {
+  onDataReceived(blogList: BlogData[],bServerData:boolean) {
     for( var blog of blogList )
     {
         if( blog.$key == this.key )
