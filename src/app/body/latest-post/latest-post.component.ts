@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { BlogsService } from 'src/app/sharedServices/firebaseService/blogs.service';
 import { BlogData } from 'src/app/model/BlogData';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { FirebaseCallback } from 'src/app/model/firebaseCallback';
 
 @Component({
@@ -13,19 +12,13 @@ import { FirebaseCallback } from 'src/app/model/firebaseCallback';
 export class LatestPostComponent implements OnInit,FirebaseCallback {
   latestPosts:BlogData[];
   public bShowloader = true;
-  subscribe:Subscription;
 
   constructor(private blogService:BlogsService,private router:Router) {}
   
   onDataReceived(blogList: BlogData[], bServerData:boolean ) {
-    var reverseList = blogList;
-    if( bServerData )
-    { 
-      var reverseList = blogList.reverse();
-    }
     this.latestPosts = [];
     var i = 0;
-    for( var blog of reverseList )
+    for( var blog of blogList )
     {
       if( i >= 3 )
       {
@@ -38,7 +31,7 @@ export class LatestPostComponent implements OnInit,FirebaseCallback {
   }
 
   ngOnInit() {
-    this.blogService.getBlogsData( this );
+    this.blogService.getLatestBlogs( this );
   }
 
   onItemClick(blog : BlogData){

@@ -8,15 +8,44 @@ import { FirebaseCallback } from 'src/app/model/firebaseCallback';
 })
 export class BlogsService {
   blogsList: AngularFireList<any>;
+  latestBlogsList: AngularFireList<any>;
   blogFamily:AngularFireList<any>;
   selectedBlog : BlogData;
   allBlogsData: BlogData[];
+  latestBlogsData: BlogData[]
   constructor(private firebase:AngularFireDatabase) {}
   
   getAllBlogsFromServer()
   {
     this.blogsList = this.firebase.list('blogs/');
     return this.blogsList;
+  }
+
+  getLatestBlogsFromServer()
+  {
+    this.latestBlogsList = this.firebase.list('blogs/',ref => ref.limitToLast(3));
+    return this.latestBlogsList;
+  }
+
+  getLatestBlogs( firebaseCallback : FirebaseCallback )
+  {
+    if( this.latestBlogsData == null || this.latestBlogsData.length == 0 )
+    {
+      var data = this.getLatestBlogsFromServer();
+      data.snapshotChanges().subscribe(item => {
+        this.latestBlogsData = [];
+        item.forEach(element => {
+          var y = element.payload.toJSON();
+          y["$key"] = element.key;
+          this.latestBlogsData.push(y as BlogData);
+        })
+        firebaseCallback.onDataReceived(this.latestBlogsData, true);
+      });
+    }
+    else
+    {
+      firebaseCallback.onDataReceived( this.latestBlogsData, false);
+    }
   }
 
   getBlogsData( firebaseCallback : FirebaseCallback )
