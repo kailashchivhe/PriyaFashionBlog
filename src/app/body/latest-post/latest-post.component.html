@@ -1,28 +1,74 @@
 <div class="row">
     <div class="col-lg-8 mb-5 mb-lg-0">
-        <div>
-            <a href="single.html"><img src="../../assets/images/facebook2.jpg" alt="Image" class="img-fluid rounded"></a>  
-              <div class="entry3 d-block d-sm-flex">
-                  <div class="text mr-4 order-1">
-                      <span class="post-category text-white bg-success mb-3">Blogs</span>
-                      <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                      <span class="post-meta mb-3 d-block">May 12, 2019</span>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio.</p>
-                  </div>
-              </div>
-        </div>
+        <div *ngIf="bShowloader; then ifblock; else elseblock"></div> 
+            <ng-template #ifblock>
+                <h3 class="font-weight-bold mb-3">Loading Latest Blogs</h3>
+                <div class="spinner-grow text-primary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-secondary" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-success" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-danger" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-warning" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-info" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-light" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow text-dark" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </ng-template>
+            <ng-template #elseblock>
+                <div *ngFor="let post of latestPosts">
+                    <div class="row row-hover">
+                        <div class="col-lg-5">
+                            <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4 waves-light" mdbWavesEffect>
+                                <img class="img-fluid" src={{post.coverPhoto}} alt="Sample image" (click)="navigateToBlogContent(post.$key)">
+                                <a>
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <span class="post-category text-white bg-primary mb-3">{{post.type}}</span>
+                            <h3 class="font-weight-bold mb-3"><strong>{{post.title}}</strong></h3>
+                            <p>{{ post.time | date: 'EEEE, MMMM d, y' }}</p>
+                            <button mdbBtn color="primary" outline="true" mdbWavesEffect (click)="navigateToBlogContent(post.$key)">
+                                Read more
+                            </button>
+                        </div>  
+                    </div><hr>
+                </div>    
+            </ng-template>
     </div>
     <div class="col-lg-4 pl-lg-4">
         <div class="bio text-center">
-            <img src="../../assets/images/bio2.jpg" alt="Image Placeholder" class="img-fluid mb-5">
+            <img src="../../assets/images_data/bio_pic_2.jpg" alt="Image Placeholder" class="img-fluid mb-2">
             <div class="bio-body">
-                <h2>Priya Haridas Kotnis</h2>
-                <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias minus.</p>
+                <h2 class="font-weight-bold mb-3">Priya Haridas Kotnis</h2>
+                <span class="post-category text-white bg-danger mb-3">ABOUT</span>
+                <p class="mb-4" style="text-align:justify">Fashion blogger/Content creator, Lifestyle influencer, Ex-Splitsvillan & COO at Dukes Den Resort & Kotnis Group. Partner at The British Brow Bar, Pune.28 years young.</p>
+                <p class="mb-4" style="text-align:justify">Priya Haridas Kotnis Lifestyle Influencer born in Mumbai city & brought up all over india thanks to her dad. Fluent in Hindi, English, Tamil, Malayalam, Bengali and Gujarati.
+                    2009 brought her to Pune, that's where she pursued her core passion. Her flare for fashion & style has always been constant since then. 
+                    She finished her Undergrad & Grad studies in Pune, Bachelor's Degree in Fashion Design and Post Graduate Diploma in Fashion Marketing & Style, respectively. 
+                    She is a Classical trained dancer in 'Bharatnatyam' 
+                    Over her short years on this planet, She has been blessed to get a chance to do what millions of girls wish to 
+                    'Mtv Splitsvilla 9'</p>
                 <p class="social">
-                    <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
-                    <a href="#" class="p-2"><span class="fa fa-youtube-play"></span></a>
+                    <a href="https://www.instagram.com/flowerfairyofficial/?hl=en" target="_blank" class="p-2"><span class="fa fa-instagram fa-2x p-2"></span></a>
+                    <a href="https://www.facebook.com/priyaharidaskotnis/" target="_blank" class="p-2"><span class="fa fa-facebook fa-2x p-2"></span></a>
+                    <a href="https://www.youtube.com/channel/UCpZjcl9EzcqVJ1CPu48QuBw" target="_blank" class="p-2"><span class="fa fa-youtube fa-2x p-2"></span></a>
+                    <a href="https://twitter.com/flowerfairy1991?lang=en" target="_blank" class="p-2"><span class="fa fa-twitter fa-2x p-2"></span></a>
                 </p>
             </div>
         </div>

@@ -1,12 +1,13 @@
 export const environment = {
   production: true,
-  firebaseConfig : {
-    apiKey: "AIzaSyDmiCWF90Tiy6j_IKQfYckczlB-F9Yu7yM",
-    authDomain: "registration-portal-d3c5d.firebaseapp.com",
-    databaseURL: "https://registration-portal-d3c5d.firebaseio.com",
-    projectId: "registration-portal-d3c5d",
-    storageBucket: "registration-portal-d3c5d.appspot.com",
-    messagingSenderId: "264061648721",
-    appId: "1:264061648721:web:5fcf8c81d9d5a047"
+  firebaseConfig :{
+    apiKey: "AIzaSyDSAPGTkJ0_Wtfop1fcSH1UYN_9Bzk_yLU",
+    authDomain: "priya-haridas-kotnis-5267e.firebaseapp.com",
+    databaseURL: "https://priya-haridas-kotnis-5267e.firebaseio.com",
+    projectId: "priya-haridas-kotnis-5267e",
+    storageBucket: "priya-haridas-kotnis-5267e.appspot.com",
+    messagingSenderId: "1068770546025",
+    appId: "1:1068770546025:web:ccca7625f4deb488936df8",
+    measurementId: "G-HTYH73DED6"
   }
 };

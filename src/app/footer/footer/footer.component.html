@@ -1,35 +1,53 @@
 <div class="container">
     <div class="row mb-5">
         <div class="col-md-4">
-            <h3 class="footer-heading mb-4 text-black">About Me</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat reprehenderit magnam deleniti quasi saepe, consequatur atque sequi delectus dolore veritatis obcaecati quae, repellat eveniet omnis, voluptatem in. Soluta, eligendi, architecto.</p>
+            <h3 class="font-weight-bold mb-3 text-black">About Me</h3>
+            <p class="mb-4" style="text-align:justify">Fashion blogger/Content creator, Lifestyle influencer, Ex-Splitsvillan & COO at Dukes Den Resort & Kotnis Group. Partner at The British Brow Bar, Pune.28 years young.</p>
+            <p class="mb-4" style="text-align:justify">Priya Haridas Kotnis Lifestyle Influencer born in Mumbai city & brought up all over india thanks to her dad. Fluent in Hindi, English, Tamil, Malayalam, Bengali and Gujarati.
+                    2009 brought her to Pune, that's where she pursued her core passion. Her flare for fashion & style has always been constant since then. 
+                    She finished her Undergrad & Grad studies in Pune, Bachelor's Degree in Fashion Design and Post Graduate Diploma in Fashion Marketing & Style, respectively. 
+                    She is a Classical trained dancer in 'Bharatnatyam' 
+                    Over her short years on this planet, She has been blessed to get a chance to do what millions of girls wish to 
+                    'Mtv Splitsvilla 9'
+            </p>
         </div>
         <div class="col-md-3 ml-auto">
-            <h3 class="footer-heading mb-4 text-black">Quick Menu</h3>
+            <h3 class="font-weight-bold mb-3 text-black">Quick Menu</h3>
             <ul class="list-unstyled float-left mr-5">
-                <li><a href="#">Fashion</a></li>
-                <li><a href="#">Beauty</a></li>
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Travel</a></li>
+                <li><a [routerLink]="['blogs/fashion']">Fashion</a></li>
+                <li><a [routerLink]="['blogs/beauty']">Beauty</a></li>
+                <li><a [routerLink]="['blogs/food']">Food</a></li>
+                <li><a [routerLink]="['blogs/travel']">Travel</a></li>
             </ul>
         </div>
         <div class="col-md-4">
             <div class="mb-5">
                 <div>
-                    <h3 class="footer-heading mb-4 text-black">Join My Fam!</h3>
+                    <h3 class="font-weight-bold mb-3 text-black">Join My Gang!</h3>
                     <form class="form-footer-subscribe">
-                        <div class="form-group ">
-                            <input type="text" class="form-control" placeholder="Full Name"><br/>
-                            <input type="text" class="form-control" placeholder="Email ID"><br/>
-                            <input type="text" class="form-control" placeholder="Mobile Number"><br/>
-                            <input type="submit" class="btn btn-primary text-white" value="Subscribe">
+                        <div [formGroup]="familyBlogForm">
+                            <div class="md-form">
+                                <input mdbInput formControlName="name" placeholder="eg. Rohan" type="text" id="name" class="form-control" >
+                                <label for="name">Name :</label>
+                            </div>
+                            <div class="md-form">
+                                <input mdbInput formControlName="email" placeholder="eg. abc@gmail.com" type="text" id="email" class="form-control" >
+                                <label for="email">Email Address :</label>
+                            </div>
+                            <div class="md-form">
+                                <input mdbInput formControlName="mobile" placeholder="eg. 1234567899" type="text" id="mobile" class="form-control">
+                                <label for="mobile">Mobile Number :</label>
+                            </div>
+                            <button mdbBtn color="primary" [disabled]="!familyBlogForm.valid" (click)="addFamilyBlog()"class="font-weight-bold mb-3">
+                                Subscribe
+                            </button>
                         </div>
                     </form>
                     <p>
-                        <a href="#"><span class="icon-facebook pt-2 pr-2 pb-2 pl-0"></span></a>
-                        <a href="#"><span class="icon-twitter p-2"></span></a>
-                        <a href="#"><span class="icon-instagram p-2"></span></a>
-                        <a href="#"><span class="icon-youtube p-2"></span></a>
+                        <a href="https://www.instagram.com/flowerfairyofficial/?hl=en" target="_blank"><span class="fa fa-instagram fa-2x p-2"></span></a>
+                        <a href="https://www.facebook.com/priyaharidaskotnis/"target="_blank"><span class="fa fa-facebook fa-2x p-2"></span></a>
+                        <a href="https://twitter.com/flowerfairy1991?lang=en" target="_blank"><span class="fa fa-twitter fa-2x p-2"></span></a>
+                        <a href="https://www.youtube.com/channel/UCpZjcl9EzcqVJ1CPu48QuBw" target="_blank"><span class="fa fa-youtube fa-2x p-2"></span></a>
                     </p>
                 </div>
             </div>
@@ -37,7 +55,7 @@
     </div>
     <div class="row">
         <div class="col-12 text-center">
-            <p>
+            <p class="font-weight-bold">
                 Copyright &copy; All rights reserved by Kailash Chivhe
             </p>
         </div>

@@ -1,31 +1,66 @@
-<div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('../../assets/images/facebook1.jpg');">
+<div class="site-cover site-cover-sm same-height overlay single-page" [ngStyle]="{'background-image': getUrl()}">
     <div class="container">
       <div class="row same-height justify-content-center">
         <div class="col-md-12 col-lg-10">
           <div class="post-entry text-center">
             <span class="post-category text-white bg-success mb-3">{{ categoryName }}</span>
-            <h1 class="mb-4"><a href="#">{{ categoryName }} BLOGS</a></h1>
+            <h1 class="font-weight-bold mb-4"><a>{{ categoryName }} BLOGS</a></h1>
           </div>
         </div>
       </div>
     </div>
 </div>
 <section class="site-section py-lg">
-    <div class="container">
-        <div class="row blog-entries element-animate mb-5">
-            <div class="col-md-12 col-lg-8 main-content">
-                <a href="#">
-                <div class="entry2 mb-5">
-                    <img src="../../assets/images/facebook1.jpg" alt="Image" class="img-fluid rounded">
-                    <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                    <div class="post-meta align-items-center text-left clearfix">
-                        <span class="d-inline-block mt-1">By Carrol Atkinson</span>
-                        <span>&nbsp;-&nbsp; February 10, 2019</span>
-                    </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio. laborum error in eum id veritatis quidem neque nesciunt at architecto nam ullam, officia unde dolores officiis veniam</p>
-                </div>
-                </a>
-            </div>
+  <div class="container">
+    <section class="my-5">
+      <div *ngIf="bShowloader; then ifblock; else elseblock"></div> 
+      <ng-template #ifblock>
+        <h3 class="font-weight-bold mb-3">Loading {{ categoryName | lowercase }} Blogs</h3>
+        <div class="spinner-grow text-primary" role="status">
+          <span class="sr-only">Loading...</span>
         </div>
-    </div>
+        <div class="spinner-grow text-secondary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-light" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-dark" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </ng-template>
+      <ng-template #elseblock>
+        <div *ngFor="let post of latestPosts">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4 waves-light" mdbWavesEffect>
+                <img class="img-fluid" src={{post.coverPhoto}} alt="Sample image">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <h1 class="font-weight-bold mb-3" style="text-align:justify"><strong>{{post.title}}</strong></h1>
+              <p><strong>{{ post.time | date: 'EEEE, MMMM d, y' }}</strong></p>
+              <p style="text-align:justify">{{post.description | shortDescription }}</p>
+              <a mdbBtn color="success" outline="true" mdbWavesEffect (click)="navigateToBlogContent(post.$key)">Read more</a>
+            </div>
+          </div><br/><hr><br/>
+        </div>
+      </ng-template>
+      </section>
+  </div>
 </section>

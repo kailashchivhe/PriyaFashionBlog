@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Upload } from '../model/Upload';
 import { BlogsService } from '../sharedServices/firebaseService/blogs.service';
 
 @Component({

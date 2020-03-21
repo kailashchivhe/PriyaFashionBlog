@@ -16,10 +16,8 @@ import { environment } from '../environments/environment';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AdminbloglistComponent } from './admin-panel/adminbloglist/adminbloglist.component';
-import { AdminblogdetailComponent } from './admin-panel/adminblogdetail/adminblogdetail.component';
 import { AdminblogeditComponent } from './admin-panel/adminblogedit/adminblogedit.component';
 import { AdminblogstartComponent } from './admin-panel/adminblogstart/adminblogstart.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -30,7 +28,16 @@ import { FooterComponent } from './footer/footer/footer.component';
 import { MenuComponent } from './header/menu/menu.component';
 import { LatestPostComponent } from './body/latest-post/latest-post.component';
 import { CategoriesComponent } from './body/categories/categories.component';
- 
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import {NgxImageCompressService} from 'ngx-image-compress';
+import { FamDetailsComponent } from './admin-panel/fam-details/fam-details.component';
+import { ToastrModule } from 'ngx-toastr'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ShortDescriptionPipe } from './pipes/short-description.pipe';
+import { AuthGuardService } from './guards/auth-guard.service';
+import { AdminLoginComponent } from './admin-panel/admin-login/admin-login.component';
+import { UploadHeaderImagesComponent } from './admin-panel/upload-header-images/upload-header-images.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +50,6 @@ import { CategoriesComponent } from './body/categories/categories.component';
     TravelListComponent,
     AdminPanelComponent,
     AdminbloglistComponent,
-    AdminblogdetailComponent,
     AdminblogeditComponent,
     AdminblogstartComponent,
     PageNotFoundComponent,
@@ -52,6 +58,10 @@ import { CategoriesComponent } from './body/categories/categories.component';
     MenuComponent,
     LatestPostComponent,
     CategoriesComponent,
+    FamDetailsComponent,
+    ShortDescriptionPipe,
+    AdminLoginComponent,
+    UploadHeaderImagesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -60,13 +70,21 @@ import { CategoriesComponent } from './body/categories/categories.component';
     CarouselModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFirestoreModule,
     AngularFireStorageModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MDBBootstrapModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(
+      {positionClass:'toast-top-full-width', 
+      closeButton: true,
+      timeOut: 4000,
+      enableHtml: true,
+      progressAnimation: 'increasing'
+      })
   ],
-  providers: [],
+  providers: [NgxImageCompressService,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

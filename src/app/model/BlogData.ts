@@ -1,15 +1,17 @@
+import { FirebaseOperation } from '@angular/fire/database/interfaces';
+
 export class BlogData{
-    type: string;
-    title: string;
-    subtitle: string;
-    time: string;
-    description: string;
-    coverPhoto: string;
-    pic1: string;
-    pic2: string;
-    pic3: string;
-    coverPhotoFile: File;
-    pic1File: File;
-    pic2File: File;
-    pic3File: File;
+    $key:string;
+    type: String;
+    title: String;
+    subtitle: String;
+    description: String;
+    coverPhoto: String;
+    pic1: String;
+    pic2: String;
+    pic3: String;
+    pic4: String;
+    pic5: String;
+    pic6: String;
+    time: String;
 }

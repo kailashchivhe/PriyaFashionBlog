@@ -1,34 +1,57 @@
-<div class="comment-form-wrap pt-5">
-    <form [formGroup]="blogForm" action="#" class="p-5 bg-light">
-        <label>Blog Title *</label>
-        <input type="text" class="form-control" id="title" formControlName="title"><br/>
-            
-        <label>Blog Subtitle *</label>
-        <input type="email" class="form-control" id="email" formControlName="subtitle"><br/>
-            
-        <label>Type *</label>&nbsp;
-        <select formControlName="type">
-            <option value="fashion">Fashion</option>
+<div class="comment-form-wrap pt-1">
+    <h2 class="font-weight-bold mb-3">Blog Upload Form</h2>
+    <form [formGroup]="blogForm" class="p-1">
+        <div class="md-form">
+            <input mdbInput placeholder="Enter Blog Title here" type="text" id="title" class="form-control" formControlName="title">
+            <label for="title">Blog Title *</label>
+        </div>
+        
+        <div class="md-form">
+                <input mdbInput placeholder="Enter Blog Sub-Title here" type="text" id="subtitle" class="form-control" formControlName="subtitle">
+                <label for="subtitle">Blog Sub-Title *</label>
+        </div>
+
+        <label>Blog Type *</label>&nbsp;
+        <select class="browser-default custom-select" formControlName="type">
+            <option selected value="fashion">Fashion</option>
             <option value="travel">Travel</option>
             <option value="beauty">Beauty</option>
-            <option value="lifestyle">Lifestyle</option>
-        </select><br/>
+            <option value="food">Food</option>
+        </select><br/><br/>
         
-        <label>Cover Photo *</label>
-        <input type="file" class="form-control" id="coverPic" formControlName="coverPic" (change)="addCoverPic($event)"><br/>
-                
-        <label>Pic 1 *</label>
-        <input type="file" class="form-control" id="pic1" formControlName="pic1" (change)="addPic1($event)"><br/>
-                
-        <label>Pic 2 *</label>
-        <input type="file" class="form-control" id="pic2" formControlName="pic2" (change)="addPic2($event)"><br/>
-                
-        <label>Pic 3 *</label>
-        <input type="file" class="form-control" id="pic3" formControlName="pic3" (change)="addPic3($event)"><br/>
-            
-        <label>Description *</label>
-        <textarea name="" id="message" cols="30" rows="10" class="form-control" formControlName="description"></textarea><br/>
+        <div class="md-form">
+            <p>Select Cover Pic *</p>
+            <input mdbInput type="file" id="coverPicFile" class="form-control" (change)="addPicToStorage($event,0)">
+        </div>
+        <div class="md-form">
+            <p>Select Pic 1 *</p>
+            <input mdbInput type="file" id="pic1" class="form-control" (change)="addPicToStorage($event,1)">
+        </div>
+        <div class="md-form">
+            <p>Select Pic 2 *</p>
+            <input mdbInput type="file" id="pic2" class="form-control" (change)="addPicToStorage($event,2)">
+        </div>
+        <div class="md-form">
+            <p>Select Pic 3 *</p>
+            <input mdbInput type="file" id="pic3" class="form-control" (change)="addPicToStorage($event,3)">
+        </div>
+        <div class="md-form">
+            <p>Select Pic 4 *</p>
+            <input mdbInput type="file" id="pic4" class="form-control" (change)="addPicToStorage($event,4)">
+        </div>
+        <div class="md-form">
+            <p>Select Pic 5 *</p>
+            <input mdbInput type="file" id="pic5" class="form-control" (change)="addPicToStorage($event,5)">
+        </div>
+        <div class="md-form">
+            <p>Select Pic 6 *</p>
+            <input mdbInput type="file" id="pic6" class="form-control" (change)="addPicToStorage($event,6)">
+        </div>
+        <div class="md-form md-outline">
+            <textarea type="text" id="description" formControlName="description" class="form-control md-textarea" rows="3" mdbInput></textarea>
+            <label for="description">Blog Description *</label>
+        </div>
 
-        <input value="Add Blog" (click)="addBlog()" class="btn btn-primary">
+        <input mdbBtn color="primary" [disabled]="!blogForm.valid" value="Add Blog" (click)="addBlog()">
     </form>
 </div>

@@ -5,7 +5,7 @@
   <title>Priya Haridas Kotnis | Fashion | Beauty | Lifestyle</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" type="image/x-icon" href="register.ico">
+  <link rel="icon" type="image/x-icon" href="./assets/_favicon.ico">
   <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
   <style>
     #loading {
@@ -33,20 +33,42 @@
       font-family: League-Gothic;
       font-weight: bold;
     }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 500px) and (min-width:300px){
       .loading-image{
-        left: 10%;
+        left: 15%;
         width: 400px;
-        padding: 10%;
-        top: 50%;
-      }    
+        top: 40%;
+      }
+    }
+    @media screen and (max-width: 800px) and (min-width:501px){
+      .loading-image {
+        position: absolute;
+        top: 30%;
+        z-index:1001;
+        left: 25%;
+        width: 500px;
+        height: auto;
+        margin:-60px 0 0 -60px;
+      }
+    }
+
+    @media screen and (max-width: 1100px) and (min-width:801px){
+      .loading-image {
+        position: absolute;
+        top: 30%;
+        z-index:1001;
+        left: 25%;
+        width: 500px;
+        height: auto;
+        margin:-60px 0 0 -60px;
+      }
     }
   </style>
 </head>
 <body> 
   <app-root>
       <div id="loading">
-          <img class="loading-image" src="./assets/images/2097024.gif"  alt="Loading..."/>
+          <img class="loading-image" src="./assets/images_data/loading.gif"  alt="Loading..."/>
           <br><br><br><br>
           <p class="text-loading" >Priya Haridas Kotnis Blog Loading....</p>
       </div>
